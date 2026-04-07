@@ -1,0 +1,33 @@
+---
+/**
+ * Interior page band — full-width photo + gradient to match the home hero language.
+ * Keeps legal/supporting pages readable with `tone="subtle"`.
+ */
+interface Props {
+  src: string;
+  alt: string;
+  tone?: "rich" | "subtle";
+}
+
+const { src, alt, tone = "rich" } = Astro.props;
+
+const overlay =
+  tone === "subtle"
+    ? "from-white/70 via-zinc-50/90 to-zinc-50"
+    : "from-white/55 via-zinc-50/82 to-zinc-50";
+---
+
+<section
+  class="relative w-full min-h-[min(52vh,420px)] overflow-hidden border-b border-zinc-200/60 md:min-h-[min(58vh,500px)] lg:min-h-[min(62vh,580px)]"
+  aria-label="Page introduction"
+>
+  <img
+    src={src}
+    alt={alt}
+    width={1920}
+    height={640}
+    class="absolute inset-x-0 bottom-0 top-24 h-full w-full object-cover object-center"
+    decoding="async"
+  />
+  <div class:list={["pointer-events-none absolute inset-0 bg-gradient-to-b", overlay]}></div>
+</section>

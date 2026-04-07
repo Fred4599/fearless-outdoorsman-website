@@ -1,0 +1,128 @@
+---
+import { siteImages } from "../data/site-images";
+import { donateUrl, phone, phoneTel, address } from "../data/site";
+
+const year = new Date().getFullYear();
+---
+
+<footer
+  class="relative z-0 overflow-hidden border-t border-zinc-200/80 bg-white pb-12 pt-32"
+  x-data="{ shown: false }"
+  x-intersect.margin.-10%.0px.-10%.0px="shown = true"
+>
+  <div class="pointer-events-none absolute left-1/2 top-1/2 z-0 w-full -translate-x-1/2 -translate-y-1/2 text-center selection:bg-transparent">
+    <h2
+      class="whitespace-nowrap text-[18vw] font-bold leading-none tracking-tighter text-primary/10 transition-all duration-[2000ms] ease-spring font-heading"
+      :class="shown ? 'scale-100 opacity-100' : 'scale-75 opacity-0'"
+    >
+      FEARLESS
+    </h2>
+  </div>
+
+  <div class="relative z-10 mx-auto max-w-7xl px-6">
+    <div
+      class="mb-24 grid grid-cols-1 gap-12 transition-all duration-[1500ms] ease-spring delay-200 md:grid-cols-2 lg:grid-cols-4 lg:gap-8"
+      :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'"
+    >
+      <div class="lg:col-span-2">
+        <img
+          src={siteImages.logo}
+          alt="Fearless Outdoorsman"
+          class="mb-4 h-12 w-auto"
+          width="160"
+          height="88"
+        />
+        <p class="mb-8 max-w-sm text-sm leading-relaxed text-zinc-600">
+          Get trip updates, volunteer needs, and impact stories — straight to your inbox. We’ll never sell your
+          information.
+        </p>
+        <form class="relative max-w-md" action="#" method="post">
+          <label class="sr-only" for="footer-email">Email</label>
+          <input
+            id="footer-email"
+            type="email"
+            name="email"
+            placeholder="Enter your email address"
+            class="w-full rounded-full border border-zinc-200 bg-zinc-50 py-3.5 pl-6 pr-32 text-sm text-zinc-900 transition-all duration-500 placeholder:text-zinc-400 focus:border-secondary focus:bg-white focus:outline-none"
+          />
+          <button
+            type="button"
+            class="absolute bottom-1 right-1 top-1 rounded-full bg-accent px-5 text-xs font-semibold text-white transition-all duration-300 hover:scale-95 hover:bg-accent/90"
+          >
+            Subscribe
+          </button>
+        </form>
+      </div>
+
+      <div>
+        <h4 class="mb-6 text-xs font-semibold uppercase tracking-widest text-primary">Explore</h4>
+        <ul class="space-y-4 text-sm text-zinc-600">
+          <li>
+            <a href="/about-us" class="inline-block transition-all duration-300 hover:translate-x-1 hover:text-primary"
+              >About us</a
+            >
+          </li>
+          <li>
+            <a href="/trips" class="inline-block transition-all duration-300 hover:translate-x-1 hover:text-primary">Trips</a>
+          </li>
+          <li>
+            <a href="/events" class="inline-block transition-all duration-300 hover:translate-x-1 hover:text-primary">Events</a>
+          </li>
+          <li>
+            <a href="/gallery" class="inline-block transition-all duration-300 hover:translate-x-1 hover:text-primary">Gallery</a>
+          </li>
+          <li>
+            <a href="/apply" class="inline-block transition-all duration-300 hover:translate-x-1 hover:text-primary">Apply</a>
+          </li>
+          <li>
+            <a href="/donors" class="inline-block transition-all duration-300 hover:translate-x-1 hover:text-primary">Donors</a>
+          </li>
+          <li>
+            <a href="/donation" class="inline-block transition-all duration-300 hover:translate-x-1 hover:text-primary"
+              >Donation</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="mb-6 text-xs font-semibold uppercase tracking-widest text-primary">Contact</h4>
+        <ul class="space-y-4 text-sm text-zinc-600">
+          <li>
+            <a href={`tel:${phoneTel}`} class="hover:text-primary">{phone}</a>
+          </li>
+          <li class="max-w-[220px] leading-relaxed">{address}</li>
+          <li>
+            <a href="/contactus" class="inline-flex items-center gap-2 hover:text-primary">
+              Contact form
+              <iconify-icon icon="solar:arrow-right-linear" class="text-xs"></iconify-icon>
+            </a>
+          </li>
+          <li class="pt-2">
+            <a
+              href={donateUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-medium text-accent hover:text-primary"
+            >
+              Donate via Square →
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col items-center justify-between gap-4 border-t border-zinc-200/80 pt-8 transition-all duration-[1500ms] ease-spring delay-300 md:flex-row"
+      :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'"
+    >
+      <div class="text-center text-xs font-medium text-zinc-500 md:text-left">
+        © {year} Fearless Outdoorsman. All rights reserved.
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 text-xs font-medium text-zinc-500">
+        <a href="/privatepolicy" class="transition-colors hover:text-primary">Privacy policy</a>
+        <a href="/terms" class="transition-colors hover:text-primary">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>

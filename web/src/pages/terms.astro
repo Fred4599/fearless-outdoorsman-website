@@ -1,0 +1,53 @@
+---
+import Layout from "../layouts/Layout.astro";
+import InteriorChrome from "../components/InteriorChrome.astro";
+import PageHero from "../components/PageHero.astro";
+import PageIntro from "../components/PageIntro.astro";
+import "../styles/global.css";
+import { pageHeroImages } from "../data/site-images";
+import { phone, address } from "../data/site";
+---
+
+<Layout
+  title="Terms & Conditions | Fearless Outdoorsman"
+  description="Terms and conditions for using the Fearless Outdoorsman website and communications."
+>
+  <InteriorChrome>
+    <PageHero
+      src={pageHeroImages.legal}
+      alt="Guided outdoor experience in Idaho — Fearless Outdoorsman website terms"
+      tone="subtle"
+    />
+    <main class="mx-auto max-w-3xl px-6 pb-32 pt-10 md:pt-14">
+      <PageIntro label="Legal" />
+      <h1 class="font-heading text-4xl font-semibold tracking-tighter text-primary md:text-5xl lg:text-6xl">
+        Terms &amp; conditions
+      </h1>
+      <p class="mt-6 text-sm text-zinc-500">Last updated: {new Date().getFullYear()}</p>
+
+      <div
+        class="mt-10 space-y-6 rounded-2xl border border-zinc-200/80 bg-white p-8 text-base leading-relaxed text-zinc-600 shadow-sm transition-colors duration-500 hover:border-primary/15 md:p-10"
+      >
+        <p>
+          These terms govern your use of the Fearless Outdoorsman website and any forms or communications you submit
+          through it. By using this site or contacting us, you agree to these terms. This is a working summary; your
+          organization should have legal counsel review and replace this page with definitive language before relying on
+          it for compliance.
+        </p>
+        <p>
+          <strong class="text-zinc-800">Communications.</strong> If you provide a phone number or email, you consent to
+          being contacted about programs, donations, and events you have asked about, in line with applicable law. You
+          can opt out of non-essential messages by replying to emails or asking us in writing.
+        </p>
+        <p>
+          <strong class="text-zinc-800">No warranty.</strong> Information on this site is provided in good faith for
+          general awareness. Trips and eligibility are subject to application review, safety, and availability — not
+          everything described may be available at all times.
+        </p>
+        <p>
+          <strong class="text-zinc-800">Contact.</strong> Questions about these terms: {phone} · {address}.
+        </p>
+      </div>
+    </main>
+  </InteriorChrome>
+</Layout>

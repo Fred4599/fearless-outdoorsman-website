@@ -1,0 +1,89 @@
+---
+import Layout from "../layouts/Layout.astro";
+import InteriorChrome from "../components/InteriorChrome.astro";
+import PageHero from "../components/PageHero.astro";
+import PageIntro from "../components/PageIntro.astro";
+import "../styles/global.css";
+import { pageHeroImages } from "../data/site-images";
+import { phone, address } from "../data/site";
+---
+
+<Layout
+  title="Privacy Policy | Fearless Outdoorsman"
+  description="How Fearless Outdoorsman collects, uses, and protects donor, volunteer, and participant information."
+>
+  <InteriorChrome>
+    <PageHero
+      src={pageHeroImages.legal}
+      alt="Guided outdoor experience in Idaho — context for Fearless Outdoorsman’s nonprofit privacy practices"
+      tone="subtle"
+    />
+    <main class="mx-auto max-w-3xl px-6 pb-32 pt-10 md:pt-14">
+      <PageIntro label="Privacy" />
+      <h1 class="font-heading text-4xl font-semibold tracking-tighter text-primary md:text-5xl lg:text-6xl">
+        Privacy policy
+      </h1>
+      <p class="mt-2 text-sm text-zinc-500">Private policy for Fearless Outdoorsman (legacy page title retained)</p>
+      <p class="mt-6 text-sm font-medium text-zinc-700">Effective date: March 26, 2024</p>
+
+      <div
+        class="mt-10 space-y-4 rounded-2xl border border-zinc-200/80 bg-white p-8 text-base leading-relaxed text-zinc-600 shadow-sm transition-colors duration-500 hover:border-primary/15 md:p-10"
+      >
+        <h2 class="font-heading text-xl font-semibold text-primary">Introduction</h2>
+        <p>
+          Fearless Outdoorsman, a non-profit organization based in Idaho, is committed to protecting the privacy of our
+          donors, volunteers, participants, and website visitors. This Privacy Policy outlines the types of information
+          we collect, how we use it, and the steps we take to ensure its protection.
+        </p>
+
+        <h2 class="mt-10 font-heading text-xl font-semibold text-primary">Information collection</h2>
+        <p>We collect information through our website, events, and services, including but not limited to:</p>
+        <ul class="list-disc space-y-2 pl-5">
+          <li>Personal identification information (name, email, address, telephone number)</li>
+          <li>Health-related information for trip participants (with consent)</li>
+          <li>Donation details (amount, payment method, transaction dates)</li>
+        </ul>
+
+        <h2 class="mt-10 font-heading text-xl font-semibold text-primary">Use of information</h2>
+        <p>The information we collect is used to:</p>
+        <ul class="list-disc space-y-2 pl-5">
+          <li>Process donations and provide tax receipts</li>
+          <li>Communicate about upcoming events, trips, and organization updates</li>
+          <li>Tailor and improve our services for participants and supporters</li>
+        </ul>
+
+        <h2 class="mt-10 font-heading text-xl font-semibold text-primary">Data sharing and disclosure</h2>
+        <p>
+          Fearless Outdoorsman does not sell, rent, or lease personal information to third parties. Information may be
+          shared with trusted partners and service providers to facilitate our operations, with strict confidentiality
+          agreements. We may also disclose information when required by law.
+        </p>
+
+        <h2 class="mt-10 font-heading text-xl font-semibold text-primary">Data security</h2>
+        <p>
+          We implement appropriate physical, electronic, and managerial procedures to safeguard and secure the
+          information we collect, preventing unauthorized access, disclosure, or misuse.
+        </p>
+
+        <h2 class="mt-10 font-heading text-xl font-semibold text-primary">Your rights</h2>
+        <p>You have the right to:</p>
+        <ul class="list-disc space-y-2 pl-5">
+          <li>Request access to your personal information</li>
+          <li>Ask for corrections or updates to your information</li>
+          <li>Opt out of certain uses of your information, such as marketing communications</li>
+        </ul>
+
+        <h2 class="mt-10 font-heading text-xl font-semibold text-primary">Changes to this policy</h2>
+        <p>
+          Fearless Outdoorsman reserves the right to modify this privacy policy at any time. We will post any changes on
+          this page and encourage you to review it regularly.
+        </p>
+
+        <h2 class="mt-10 font-heading text-xl font-semibold text-primary">Contact us</h2>
+        <p>
+          If you have questions or concerns about our privacy practices, please contact us at {phone} or {address}.
+        </p>
+      </div>
+    </main>
+  </InteriorChrome>
+</Layout>

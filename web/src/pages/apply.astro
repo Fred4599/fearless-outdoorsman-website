@@ -1,0 +1,108 @@
+---
+import Layout from "../layouts/Layout.astro";
+import InteriorChrome from "../components/InteriorChrome.astro";
+import PageHero from "../components/PageHero.astro";
+import PageIntro from "../components/PageIntro.astro";
+import "../styles/global.css";
+import { pageHeroImages } from "../data/site-images";
+import { contactEmail, donateUrl } from "../data/site";
+
+const mail = (subject: string) =>
+  `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}`;
+---
+
+<Layout
+  title="Apply | Fearless Outdoorsman"
+  description="Apply for a child or veteran trip, or volunteer with Fearless Outdoorsman — join the family and help put healing within reach."
+>
+  <InteriorChrome>
+    <PageHero
+      src={pageHeroImages.apply}
+      alt="Young participants and volunteers together after an outdoor trip"
+    />
+    <main class="mx-auto max-w-3xl px-6 pb-32 pt-10 md:pt-14">
+      <PageIntro label="Get involved" />
+      <h1 class="font-heading text-4xl font-semibold tracking-tighter text-primary md:text-5xl lg:text-6xl">
+        Join the Fearless Outdoorsman family
+      </h1>
+      <h2 class="mt-4 font-heading text-xl font-medium tracking-tight text-zinc-700">Become a part of something bigger</h2>
+      <p class="mt-6 text-base leading-relaxed text-zinc-600">
+        At Fearless Outdoorsman, we believe in the healing power of nature and the joy it can bring into the lives of
+        those facing significant challenges. Our mission is to provide unforgettable hunting and fishing experiences to
+        children with life-threatening illnesses and veterans affected by trauma. But we can’t do it without you! By
+        getting involved, you help us extend these life-enhancing opportunities to those who need them most. Whether
+        you’re looking to volunteer, know a child who would cherish this experience, or wish to nominate a veteran,
+        your involvement is the key to turning these adventures into realities.
+      </p>
+
+      <a
+        href="/contactus"
+        class="mt-10 inline-flex rounded-full bg-accent px-8 py-4 text-sm font-semibold text-white shadow-[0_1px_5px_rgba(0,0,0,0.4)] transition-all duration-500 ease-spring hover:scale-[1.02] hover:bg-accent/90"
+      >
+        Get involved today
+      </a>
+
+      <section class="mt-16">
+        <h3 class="font-heading text-lg font-semibold tracking-tight text-primary">Select a form below</h3>
+        <p class="mt-3 text-sm leading-relaxed text-zinc-600">
+          Choose the track that fits you. Open your email app to send us a message — we’ll reply with the right
+          application packet and next steps. You can also call us or use the
+          <a href="/contactus" class="font-medium text-accent hover:text-primary">contact form</a>
+          if you prefer.
+        </p>
+        <ul class="mt-8 grid gap-4 sm:grid-cols-1 md:grid-cols-3">
+          <li>
+            <a
+              href={mail("Children application — Fearless Outdoorsman")}
+              class="group flex h-full flex-col rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-sm transition-all duration-500 ease-spring hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-md"
+            >
+              <iconify-icon
+                icon="solar:heart-linear"
+                class="mb-4 text-2xl text-primary transition-transform duration-500 ease-spring group-hover:scale-110"
+              ></iconify-icon>
+              <span class="font-heading font-semibold text-zinc-900">Children application</span>
+              <span class="mt-2 text-sm text-zinc-600">Request the application for a qualifying child.</span>
+              <span class="mt-4 text-sm font-medium text-accent">Email us →</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href={mail("Veteran application — Fearless Outdoorsman")}
+              class="group flex h-full flex-col rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-sm transition-all duration-500 ease-spring hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-md"
+            >
+              <iconify-icon
+                icon="solar:shield-check-linear"
+                class="mb-4 text-2xl text-primary transition-transform duration-500 ease-spring group-hover:scale-110"
+              ></iconify-icon>
+              <span class="font-heading font-semibold text-zinc-900">Veteran application</span>
+              <span class="mt-2 text-sm text-zinc-600">Nominate or apply for a veteran participant.</span>
+              <span class="mt-4 text-sm font-medium text-accent">Email us →</span>
+            </a>
+          </li>
+          <li>
+            <a
+              href={mail("Volunteer application — Fearless Outdoorsman")}
+              class="group flex h-full flex-col rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-sm transition-all duration-500 ease-spring hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-md"
+            >
+              <iconify-icon
+                icon="solar:users-group-two-rounded-linear"
+                class="mb-4 text-2xl text-primary transition-transform duration-500 ease-spring group-hover:scale-110"
+              ></iconify-icon>
+              <span class="font-heading font-semibold text-zinc-900">Volunteer application</span>
+              <span class="mt-2 text-sm text-zinc-600">Offer your time and skills in the field.</span>
+              <span class="mt-4 text-sm font-medium text-accent">Email us →</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <p class="mt-10 text-sm text-zinc-500">
+        If these links don’t open your mail app, reach us at
+        <a class="font-medium text-accent hover:text-primary" href={`mailto:${contactEmail}`}>{contactEmail}</a>
+        or <a href={donateUrl} class="font-medium text-accent hover:text-primary" target="_blank" rel="noopener noreferrer"
+          >support the mission with a donation</a
+        >.
+      </p>
+    </main>
+  </InteriorChrome>
+</Layout>

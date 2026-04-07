@@ -1,0 +1,69 @@
+---
+import Layout from "../layouts/Layout.astro";
+import InteriorChrome from "../components/InteriorChrome.astro";
+import PageHero from "../components/PageHero.astro";
+import PageIntro from "../components/PageIntro.astro";
+import "../styles/global.css";
+import { pageHeroImages } from "../data/site-images";
+import { galleryImages } from "../data/gallery-images";
+import { donateUrl } from "../data/site";
+---
+
+<Layout
+  title="Gallery | Fearless Outdoorsman"
+  description="Photos from Fearless Outdoorsman trips — mentoring, healing, and adventure in the field for children and veterans."
+>
+  <InteriorChrome>
+    <PageHero
+      src={pageHeroImages.gallery}
+      alt="Highlights from Fearless Outdoorsman hunts and fishing trips"
+    />
+    <main class="mx-auto max-w-7xl px-6 pb-32 pt-10 md:pt-14">
+      <div class="max-w-3xl">
+        <PageIntro label="Moments" />
+        <h1 class="font-heading text-4xl font-semibold tracking-tighter text-primary md:text-5xl lg:text-6xl">
+          Gallery
+        </h1>
+        <p class="mt-6 text-base leading-relaxed text-zinc-600">
+          A glimpse of the mentors, families, and wild places that make this work possible. Every image reflects real
+          trips supported by donors and volunteers.
+        </p>
+      </div>
+
+      <ul
+        class="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6"
+        role="list"
+      >
+        {galleryImages.map((item) => (
+          <li class="overflow-hidden rounded-2xl border border-zinc-200/80 bg-zinc-100 shadow-sm ring-1 ring-zinc-200/80 transition-colors duration-500 hover:border-primary/20 hover:shadow-md">
+            <img
+              src={item.src}
+              width={960}
+              height={640}
+              decoding="async"
+              class="aspect-[4/3] w-full object-cover object-center"
+              alt={item.alt}
+              loading="lazy"
+            />
+          </li>
+        ))}
+      </ul>
+
+      <div
+        class="mx-auto mt-16 max-w-2xl rounded-2xl border border-zinc-200/80 bg-white p-8 text-center shadow-sm md:p-10"
+      >
+        <p class="text-base leading-relaxed text-zinc-600">
+          Help us put more of these moments on the calendar for kids and veterans.
+        </p>
+        <a
+          href={donateUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-6 inline-flex rounded-full bg-accent px-8 py-3.5 text-sm font-semibold text-white shadow-[0_1px_5px_rgba(0,0,0,0.4)] transition-all duration-500 ease-spring hover:scale-[1.02] hover:bg-accent/90"
+        >
+          Donate now
+        </a>
+      </div>
+    </main>
+  </InteriorChrome>
+</Layout>

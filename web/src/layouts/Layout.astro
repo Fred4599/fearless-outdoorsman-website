@@ -1,0 +1,50 @@
+---
+import { siteImages } from "../data/site-images";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = "Fearless Outdoorsman — hunting and fishing trips at no cost for children with life-threatening illnesses and veterans with trauma.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href={siteImages.logo} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer></script>
+  </head>
+  <body>
+    <slot />
+    <style is:global>
+      [x-cloak] {
+        display: none !important;
+      }
+      @keyframes scroll-arrow-bob {
+        0%,
+        100% {
+          transform: translateY(0);
+          opacity: 0.55;
+        }
+        50% {
+          transform: translateY(5px);
+          opacity: 1;
+        }
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,498 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import "../styles/global.css";
+import { siteImages } from "../data/site-images";
+import { donateUrl, pressUrl } from "../data/site";
+---
+
+<Layout
+  title="Fearless Outdoorsman | Healing Nature, Honoring Heroes"
+  description="Non-profit hunting and fishing trips at no cost for children with life-threatening illnesses and veterans with trauma — healing through outdoor adventure in Idaho and beyond."
+>
+  <SiteHeader />
+
+  <!-- Hero -->
+  <section class="relative flex h-screen items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0" x-data="{ loaded: false }" x-init="setTimeout(() => loaded = true, 50)">
+      <img
+        src={siteImages.hero}
+        width={1080}
+        height={1080}
+        fetchpriority="high"
+        decoding="async"
+        class="h-full w-full origin-center object-cover object-center transition-all duration-[2000ms] ease-spring"
+        :class="loaded ? 'scale-100 opacity-50' : 'scale-110 opacity-0'"
+        alt="Young participants with their dog and waterfowl after a hunt — outdoor adventure with Fearless Outdoorsman"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-white/50 via-zinc-50/80 to-zinc-50"></div>
+    </div>
+
+    <div
+      class="relative z-10 mx-auto max-w-5xl px-6 text-center"
+      x-data="{ shown: false }"
+      x-init="setTimeout(() => shown = true, 300)"
+    >
+      <h1
+        class="font-heading text-4xl font-semibold tracking-tighter text-primary transition-all duration-1000 ease-spring delay-100 md:text-6xl lg:text-7xl"
+        :class="shown ? 'translate-y-0 scale-100 opacity-100' : 'translate-y-12 scale-95 opacity-0'"
+      >
+        Fearless Outdoorsman
+      </h1>
+
+      <p
+        class="mx-auto mt-8 max-w-2xl text-base leading-relaxed text-zinc-600 transition-all duration-1000 ease-spring delay-300 md:text-lg"
+        :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'"
+      >
+        Providing hunting and fishing trips for children afflicted with life threatening illnesses. Also veterans
+        afflicted with trauma medically or emotionally.
+      </p>
+
+      <div
+        class="mt-12 flex flex-col items-center justify-center gap-4 transition-all duration-1000 ease-spring delay-500 sm:flex-row"
+        :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'"
+      >
+        <a
+          href="#mission"
+          class="w-full rounded-full bg-accent px-8 py-4 text-center text-sm font-medium text-white shadow-[0_1px_5px_rgba(0,0,0,0.4)] transition-all duration-500 ease-spring hover:scale-105 hover:bg-accent/90 sm:w-auto"
+        >
+          Explore the mission
+        </a>
+        <a
+          href="/apply"
+          class="w-full rounded-full border border-zinc-300 bg-white/60 px-8 py-4 text-center text-sm font-medium text-zinc-800 backdrop-blur-sm transition-all duration-500 hover:border-primary/40 hover:bg-white sm:w-auto"
+        >
+          Get involved
+        </a>
+      </div>
+    </div>
+
+    <div class="absolute bottom-12 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 text-zinc-500 opacity-80">
+      <span class="text-xs font-medium uppercase tracking-widest">Scroll</span>
+      <svg
+        class="h-5 w-5 shrink-0 text-primary"
+        aria-hidden="true"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        style="animation: scroll-arrow-bob 2s cubic-bezier(0.23, 1, 0.32, 1) infinite;"
+      >
+        <path d="M6 9l6 6 6-6"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Mission / story -->
+  <section id="mission" class="px-6 py-32 md:py-48">
+    <div class="mx-auto grid max-w-7xl grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-32">
+      <div
+        class="order-2 lg:order-1"
+        x-data="{ shown: false }"
+        x-intersect.margin.-10%.0px.-10%.0px="shown = true"
+      >
+        <div
+          class="mb-8 flex items-center gap-3"
+          :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'"
+          style="transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);"
+        >
+          <div class="h-px w-8 bg-zinc-300"></div>
+          <span class="text-xs font-medium uppercase tracking-widest text-zinc-500">Why we exist</span>
+        </div>
+
+        <h2
+          class="font-heading text-3xl font-semibold leading-tight tracking-tight text-primary md:text-5xl"
+          :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'"
+          style="transition: all 1s cubic-bezier(0.23, 1, 0.32, 1) 0.1s;"
+        >
+          Outdoors as <br />transformative care.
+        </h2>
+
+        <div
+          class="mt-8 space-y-6 text-base leading-relaxed text-zinc-600"
+          :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'"
+          style="transition: all 1s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;"
+        >
+          <p>
+            Fearless Outdoorsman is a non-profit built by outdoor enthusiasts, healthcare professionals, and veteran
+            advocates. We believe nature can be a sanctuary from struggle — a place for respite, joy, and camaraderie
+            on guided, fully equipped hunting and fishing trips.
+          </p>
+          <p>
+            Volunteers and donors make it possible for families and veterans to experience hope and resilience in the
+            field, at no cost to those we serve.
+          </p>
+        </div>
+
+        <div
+          class="mt-12 flex flex-wrap items-center gap-4"
+          :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'"
+          style="transition: all 1s cubic-bezier(0.23, 1, 0.32, 1) 0.3s;"
+        >
+          <a
+            href="/about-us"
+            class="text-sm font-medium text-accent transition-colors hover:text-primary"
+          >
+            Read our full story →
+          </a>
+        </div>
+      </div>
+
+      <div
+        class="relative order-1 lg:order-2"
+        x-data="{ shown: false }"
+        x-intersect.margin.-10%.0px.-10%.0px="shown = true"
+      >
+        <div class="relative aspect-[4/5] overflow-hidden rounded-2xl bg-zinc-200 shadow-lg shadow-zinc-200/50 ring-1 ring-zinc-200/80">
+          <div
+            class="absolute inset-0 z-10 origin-top bg-zinc-100 transition-transform duration-[1.5s] ease-spring"
+            :class="shown ? 'scale-y-0' : 'scale-y-100'"
+          >
+          </div>
+          <img
+            src={siteImages.mission}
+            width={480}
+            height={640}
+            decoding="async"
+            class="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-[2s] ease-spring"
+            :class="shown ? 'scale-100' : 'scale-110'"
+            alt="Mentor and young participant with an elk — healing through guided outdoor adventure"
+          />
+        </div>
+        <div
+          class="absolute -bottom-6 -left-6 z-[-1] hidden h-32 w-32 rounded-full border border-zinc-200 md:block"
+          :class="shown ? 'scale-100 opacity-100' : 'scale-50 opacity-0'"
+          style="transition: all 1.5s cubic-bezier(0.23, 1, 0.32, 1) 0.5s;"
+        >
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pillars -->
+  <section id="pillars" class="border-y border-zinc-200/80 bg-zinc-100/70 py-32">
+    <div class="mx-auto max-w-7xl px-6">
+      <div class="mx-auto mb-20 max-w-2xl text-center" x-data="{ shown: false }" x-intersect="shown = true">
+        <h2
+          class="font-heading text-3xl font-semibold tracking-tight text-primary transition-all duration-1000 ease-spring md:text-4xl"
+          :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'"
+        >
+          Who we serve
+        </h2>
+        <p
+          class="mt-4 text-base text-zinc-600 transition-all duration-1000 ease-spring delay-100"
+          :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'"
+        >
+          Four threads of one mission: empowerment through outdoor adventure.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-10">
+        <div
+          x-data="{ shown: false }"
+          x-intersect.margin.-5%.0px.-5%.0px="shown = true"
+          class="group flex h-full flex-col rounded-2xl border border-zinc-200/80 bg-white p-8 shadow-sm transition-colors duration-500 hover:border-primary/20 hover:shadow-md"
+          :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'"
+          style="transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);"
+        >
+          <div
+            class="mb-6 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-primary/15 bg-primary/5 transition-transform duration-500 ease-spring group-hover:scale-110"
+          >
+            <iconify-icon icon="solar:heart-linear" class="text-xl text-primary" style="stroke-width: 1.5;"
+            ></iconify-icon>
+          </div>
+          <h3 class="font-heading mb-3 text-xl font-semibold tracking-tight text-zinc-900">
+            Children with Life-Threatening Illnesses
+          </h3>
+          <p class="text-sm leading-relaxed text-zinc-600">
+            We provide children facing severe health conditions with the opportunity to enjoy outdoor activities such
+            as hunting and fishing. These experiences offer a much-needed respite from their medical treatments,
+            allowing them to embrace moments of joy, freedom, and adventure in the natural world, thereby enhancing their
+            emotional well-being and sense of normalcy.
+          </p>
+          <a
+            href={donateUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group/donate mt-auto inline-flex items-center gap-2 pt-6 text-sm font-medium text-accent transition-colors hover:text-primary"
+          >
+            <span>Donate today</span>
+            <iconify-icon
+              icon="solar:arrow-right-linear"
+              class="transition-transform group-hover/donate:translate-x-1"></iconify-icon>
+          </a>
+        </div>
+
+        <div
+          x-data="{ shown: false }"
+          x-intersect.margin.-5%.0px.-5%.0px="shown = true"
+          class="group flex h-full flex-col rounded-2xl border border-zinc-200/80 bg-white p-8 shadow-sm transition-colors duration-500 hover:border-primary/20 hover:shadow-md"
+          :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'"
+          style="transition: all 1s cubic-bezier(0.23, 1, 0.32, 1) 0.1s;"
+        >
+          <div
+            class="mb-6 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-primary/15 bg-primary/5 transition-transform duration-500 ease-spring group-hover:scale-110"
+          >
+            <iconify-icon icon="solar:shield-check-linear" class="text-xl text-primary" style="stroke-width: 1.5;"
+            ></iconify-icon>
+          </div>
+          <h3 class="font-heading mb-3 text-xl font-semibold tracking-tight text-zinc-900">Veterans with Trauma</h3>
+          <p class="text-sm leading-relaxed text-zinc-600">
+            This group includes military veterans who have experienced physical or emotional trauma, including PTSD,
+            injury, or other health issues related to their service. Fearless Outdoorsman seeks to support these
+            veterans by offering outdoor experiences that can help in their healing process, providing them with
+            opportunities to connect with nature and find peace, as well as build camaraderie with others who have
+            faced similar challenges.
+          </p>
+          <a
+            href={donateUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group/donate mt-auto inline-flex items-center gap-2 pt-6 text-sm font-medium text-accent transition-colors hover:text-primary"
+          >
+            <span>Donate today</span>
+            <iconify-icon
+              icon="solar:arrow-right-linear"
+              class="transition-transform group-hover/donate:translate-x-1"></iconify-icon>
+          </a>
+        </div>
+
+        <div
+          x-data="{ shown: false }"
+          x-intersect.margin.-5%.0px.-5%.0px="shown = true"
+          class="group flex h-full flex-col rounded-2xl border border-zinc-200/80 bg-white p-8 shadow-sm transition-colors duration-500 hover:border-primary/20 hover:shadow-md"
+          :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'"
+          style="transition: all 1s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;"
+        >
+          <div
+            class="mb-6 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-primary/15 bg-primary/5 transition-transform duration-500 ease-spring group-hover:scale-110"
+          >
+            <iconify-icon icon="solar:leaf-linear" class="text-xl text-primary" style="stroke-width: 1.5;"
+            ></iconify-icon>
+          </div>
+          <h3 class="font-heading mb-3 text-xl font-semibold tracking-tight text-zinc-900">Healing and Rehabilitation</h3>
+          <p class="text-sm leading-relaxed text-zinc-600">
+            Dedicated to offering therapeutic outdoor experiences, Fearless Outdoorsman facilitates emotional and
+            physical healing for children facing life-threatening illnesses and veterans with trauma. Through hunting,
+            fishing, and connecting with nature, participants find solace, regain strength, and experience moments of joy
+            and liberation from their everyday challenges.
+          </p>
+          <a
+            href={donateUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group/donate mt-auto inline-flex items-center gap-2 pt-6 text-sm font-medium text-accent transition-colors hover:text-primary"
+          >
+            <span>Donate today</span>
+            <iconify-icon
+              icon="solar:arrow-right-linear"
+              class="transition-transform group-hover/donate:translate-x-1"></iconify-icon>
+          </a>
+        </div>
+
+        <div
+          x-data="{ shown: false }"
+          x-intersect.margin.-5%.0px.-5%.0px="shown = true"
+          class="group flex h-full flex-col rounded-2xl border border-zinc-200/80 bg-white p-8 shadow-sm transition-colors duration-500 hover:border-primary/20 hover:shadow-md"
+          :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'"
+          style="transition: all 1s cubic-bezier(0.23, 1, 0.32, 1) 0.3s;"
+        >
+          <div
+            class="mb-6 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-primary/15 bg-primary/5 transition-transform duration-500 ease-spring group-hover:scale-110"
+          >
+            <iconify-icon icon="solar:users-group-two-rounded-linear" class="text-xl text-primary" style="stroke-width: 1.5;"
+            ></iconify-icon>
+          </div>
+          <h3 class="font-heading mb-3 text-xl font-semibold tracking-tight text-zinc-900">Cultural Immersions</h3>
+          <p class="text-sm leading-relaxed text-zinc-600">
+            By fostering a supportive and understanding community, Fearless Outdoorsman aims to enhance the resilience
+            and personal growth of its participants. Through shared outdoor adventures, individuals build camaraderie,
+            share experiences, and support each other, creating a network of mutual support and encouragement that aids in
+            their overall journey of recovery and empowerment.
+          </p>
+          <a
+            href={donateUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group/donate mt-auto inline-flex items-center gap-2 pt-6 text-sm font-medium text-accent transition-colors hover:text-primary"
+          >
+            <span>Donate today</span>
+            <iconify-icon
+              icon="solar:arrow-right-linear"
+              class="transition-transform group-hover/donate:translate-x-1"></iconify-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact CTA -->
+  <section id="impact" class="px-6 py-32">
+    <div
+      class="relative mx-auto flex h-[60vh] max-w-7xl items-center justify-center overflow-hidden rounded-3xl md:h-[80vh]"
+      x-data="{ shown: false }"
+      x-intersect.margin.-10%.0px.-10%.0px="shown = true"
+    >
+      <div
+        class="absolute inset-0 z-10 origin-bottom bg-zinc-100 transition-transform duration-[1.5s] ease-spring"
+        :class="shown ? 'scale-y-0' : 'scale-y-100'"
+      >
+      </div>
+
+      <img
+        src={siteImages.impact}
+        width={500}
+        height={500}
+        decoding="async"
+        class="absolute inset-0 h-full w-full object-cover object-center opacity-70 transition-transform duration-[2s] ease-spring"
+        :class="shown ? 'scale-100' : 'scale-110'"
+        alt="Mentor and young participant with a black bear and hunting hounds in the forest"
+      />
+
+      <div class="absolute inset-0 bg-gradient-to-t from-zinc-50 via-zinc-50/50 to-transparent"></div>
+
+      <div
+        class="relative z-20 max-w-3xl px-6 text-center"
+        :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'"
+        style="transition: all 1s cubic-bezier(0.23, 1, 0.32, 1) 0.5s;"
+      >
+        <h2 class="font-heading mb-6 text-4xl font-semibold tracking-tighter text-primary md:text-6xl">
+          Healing Nature, Honoring Heroes
+        </h2>
+        <p class="mb-4 text-base text-zinc-600 md:text-lg">
+          <span class="italic font-light text-zinc-800">Empowering lives through outdoor adventures.</span>
+        </p>
+        <p class="mb-10 text-base text-zinc-600 md:text-lg">
+          Donations fund trips, gear, and logistics so every eligible participant can focus on the moment — not the
+          bill. When you give, you put healing within reach.
+        </p>
+        <a
+          href={donateUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group inline-flex items-center gap-2 text-sm font-medium text-accent transition-colors hover:text-primary"
+        >
+          <span>Donate today</span>
+          <iconify-icon icon="solar:arrow-right-linear" class="transition-transform group-hover:translate-x-1"
+          ></iconify-icon>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Press & voices -->
+  <section id="voices" class="relative z-10 overflow-hidden bg-zinc-100/80 px-6 py-24">
+    <div class="relative mx-auto max-w-7xl">
+      <div class="mb-20 text-center" x-data="{ shown: false }" x-intersect="shown = true">
+        <div
+          class="mb-6 inline-flex items-center gap-2 rounded-full border border-zinc-200/80 bg-white px-3 py-1 shadow-sm"
+          :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'"
+          style="transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);"
+        >
+          <div class="h-1.5 w-1.5 rounded-full bg-accent"></div>
+          <span class="text-xs font-medium uppercase tracking-wide text-zinc-600">Press &amp; community</span>
+        </div>
+        <h2
+          class="font-heading text-3xl font-semibold tracking-tight text-primary transition-all duration-1000 ease-spring delay-100 md:text-5xl"
+          :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'"
+        >
+          See our latest shout out
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <a
+          href={pressUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group relative block overflow-hidden rounded-3xl border border-zinc-200/80 bg-white p-8 shadow-sm transition-all duration-500 ease-spring hover:-translate-y-2 hover:border-accent/30 hover:shadow-[0_0_40px_-10px_rgba(187,19,62,0.12)]"
+          x-data="{ shown: false }"
+          x-intersect.margin.-5%.0px.-5%.0px="shown = true"
+          :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'"
+          style="transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);"
+        >
+          <div
+            class="absolute right-0 top-0 h-32 w-32 rounded-full bg-accent opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-[0.08]"
+          >
+          </div>
+          <div class="relative z-10">
+            <iconify-icon icon="solar:document-text-linear" class="mb-6 text-3xl text-zinc-400 transition-colors group-hover:text-accent"
+            ></iconify-icon>
+            <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-accent">Alaska Sporting Journal</p>
+            <p class="mb-6 text-base font-light leading-relaxed text-zinc-600">
+              December 25, 2024 — a feel-good story about participant Ella and an elk hunt arranged by Fearless
+              Outdoorsman.
+            </p>
+            <span class="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:text-accent">
+              Read the article
+              <iconify-icon icon="solar:arrow-up-right-linear"></iconify-icon>
+            </span>
+          </div>
+        </a>
+
+        <div
+          class="group relative overflow-hidden rounded-3xl border border-zinc-200/80 bg-white p-8 shadow-sm transition-all duration-500 ease-spring hover:-translate-y-2 hover:border-primary/20 hover:shadow-md"
+          x-data="{ shown: false }"
+          x-intersect.margin.-5%.0px.-5%.0px="shown = true"
+          :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'"
+          style="transition: all 1s cubic-bezier(0.23, 1, 0.32, 1) 0.1s;"
+        >
+          <div
+            class="absolute right-0 top-0 h-32 w-32 rounded-full bg-primary opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-[0.06]"
+          >
+          </div>
+          <div class="relative z-10">
+            <iconify-icon icon="solar:quote-left-linear" class="mb-6 text-3xl text-zinc-400 transition-colors group-hover:text-primary"
+            ></iconify-icon>
+            <p class="mb-8 text-base font-light leading-relaxed text-zinc-600">
+              “We focus on who qualifies, how to apply, and what a trip actually looks like — guided hunts and fishing,
+              fully equipped, built around safety and respect for the land.”
+            </p>
+            <div class="flex items-center gap-4 border-t border-zinc-200/80 pt-6">
+              <div
+                class="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-200 bg-zinc-100 text-xs font-semibold text-zinc-600"
+              >
+                FAQ
+              </div>
+              <div>
+                <h4 class="text-sm font-semibold text-zinc-900">Your questions</h4>
+                <p class="text-xs text-zinc-500">Trips, support &amp; volunteering</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="group relative overflow-hidden rounded-3xl border border-zinc-200/80 bg-white p-8 shadow-sm transition-all duration-500 ease-spring hover:-translate-y-2 hover:border-primary/20 hover:shadow-md md:col-span-2 lg:col-span-1"
+          x-data="{ shown: false }"
+          x-intersect.margin.-5%.0px.-5%.0px="shown = true"
+          :class="shown ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'"
+          style="transition: all 1s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;"
+        >
+          <div
+            class="absolute right-0 top-0 h-32 w-32 rounded-full bg-accent opacity-0 blur-3xl transition-opacity duration-700 group-hover:opacity-[0.06]"
+          >
+          </div>
+          <div class="relative z-10">
+            <iconify-icon icon="solar:heart-bold" class="mb-6 text-3xl text-zinc-400 transition-colors group-hover:text-accent"
+            ></iconify-icon>
+            <p class="mb-8 text-base font-light leading-relaxed text-zinc-600">
+              Donate, volunteer, or sponsor — every path helps us put more participants in the field. Join the family
+              and become part of something bigger.
+            </p>
+            <div class="flex flex-wrap gap-3 border-t border-zinc-200/80 pt-6">
+              <a href="/apply" class="text-sm font-medium text-accent hover:text-primary">Apply / volunteer</a>
+              <span class="text-zinc-400">·</span>
+              <a href={donateUrl} class="text-sm font-medium text-zinc-600 hover:text-primary" target="_blank" rel="noopener noreferrer">Donate</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <SiteFooter />
+</Layout>

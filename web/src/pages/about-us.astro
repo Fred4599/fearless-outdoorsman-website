@@ -1,0 +1,80 @@
+---
+import Layout from "../layouts/Layout.astro";
+import InteriorChrome from "../components/InteriorChrome.astro";
+import PageHero from "../components/PageHero.astro";
+import PageIntro from "../components/PageIntro.astro";
+import "../styles/global.css";
+import { pageHeroImages } from "../data/site-images";
+import { donateUrl } from "../data/site";
+---
+
+<Layout
+  title="About Us | Fearless Outdoorsman"
+  description="Founded by outdoor enthusiasts, healthcare professionals, and veteran advocates — safe, inclusive hunting and fishing experiences at no cost for children and veterans."
+>
+  <InteriorChrome>
+    <PageHero
+      src={pageHeroImages.aboutUs}
+      alt="Mentor and young participant outdoors — healing through guided adventure with Fearless Outdoorsman"
+    />
+    <main class="mx-auto max-w-3xl px-6 pb-32 pt-10 md:pt-14">
+      <PageIntro label="Our story" />
+      <h1 class="font-heading text-4xl font-semibold tracking-tighter text-primary md:text-5xl lg:text-6xl">
+        Empowering healing through outdoor adventures
+      </h1>
+      <div class="mt-10 space-y-6 text-base leading-relaxed text-zinc-600">
+        <p>
+          At the heart of Fearless Outdoorsman lies a deep-rooted belief in the transformative power of nature. Our
+          non-profit organization is dedicated to offering life-enriching hunting and fishing experiences, at no cost,
+          to children facing life-threatening illnesses and veterans enduring the aftermath of trauma. These outdoor
+          adventures serve as a sanctuary — a place where struggles can momentarily fade into the background,
+          replaced by the tranquility and beauty of the natural world.
+        </p>
+        <p>
+          Founded by a passionate group of outdoor enthusiasts, healthcare professionals, and veteran advocates,
+          Fearless Outdoorsman emerged from a collective vision to harness nature’s healing potential. Our team is
+          committed to creating safe, inclusive, and memorable experiences, meticulously tailored to meet the unique
+          needs and aspirations of each participant.
+        </p>
+        <p>
+          Through every expedition, we strive not only to provide a respite from the daily challenges our participants
+          face but also to instill a sense of hope, empowerment, and joy. Our adventures are more than just trips;
+          they are journeys of discovery, healing, and connection — fostering personal growth and building a supportive
+          community united by shared experiences and understanding.
+        </p>
+      </div>
+
+      <section
+        class="mt-16 rounded-2xl border border-zinc-200/80 bg-white p-8 shadow-sm transition-colors duration-500 hover:border-primary/20 hover:shadow-md md:p-10"
+      >
+        <h2 class="font-heading text-2xl font-semibold tracking-tight text-primary">Join our cause</h2>
+        <p class="mt-4 text-base leading-relaxed text-zinc-600">
+          Your support and involvement are crucial to our mission. Whether as a donor, volunteer, or advocate, your
+          contribution propels our efforts forward, enabling us to reach more individuals and amplify our impact.
+          Together, we can continue to offer these vital experiences, forging a path of healing, resilience, and
+          lasting memories for those who need it most.
+        </p>
+        <p class="mt-4 text-base leading-relaxed text-zinc-600">
+          Discover more about how you can be part of this transformative journey and help us bring the healing power of
+          nature to more lives. Your action today can ignite a beacon of hope and empowerment for tomorrow.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a
+            href="/apply"
+            class="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-[0_1px_5px_rgba(0,0,0,0.4)] transition-all duration-500 ease-spring hover:scale-[1.02] hover:bg-accent/90"
+          >
+            Get involved
+          </a>
+          <a
+            href={donateUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-full border border-primary px-6 py-3 text-sm font-semibold text-primary transition hover:bg-primary/5"
+          >
+            Donate today
+          </a>
+        </div>
+      </section>
+    </main>
+  </InteriorChrome>
+</Layout>

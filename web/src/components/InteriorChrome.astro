@@ -1,0 +1,10 @@
+---
+import SiteHeader from "./SiteHeader.astro";
+import SiteFooter from "./SiteFooter.astro";
+---
+
+<SiteHeader solidNav />
+<div class="bg-gradient-to-b from-white via-zinc-50/90 to-zinc-50">
+  <slot />
+</div>
+<SiteFooter />

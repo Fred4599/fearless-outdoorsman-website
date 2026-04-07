@@ -1,0 +1,21 @@
+{
+  "name": "fearless-outdoorsman-web",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@alpinejs/intersect": "^3.14.8",
+    "@astrojs/alpinejs": "^0.4.0",
+    "@astrojs/tailwind": "^5.1.4",
+    "alpinejs": "^3.14.8",
+    "astro": "^5.2.5",
+    "tailwindcss": "^3.4.17"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3"
+  }
+}

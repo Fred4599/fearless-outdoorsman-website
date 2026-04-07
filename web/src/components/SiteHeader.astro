@@ -1,0 +1,173 @@
+---
+import { siteImages } from "../data/site-images";
+import { donateUrl } from "../data/site";
+
+interface Props {
+  /** Interior pages: solid white bar from first paint (home stays transparent until scroll). */
+  solidNav?: boolean;
+}
+
+const { solidNav = false } = Astro.props;
+
+const navPrimary = [
+  { href: "/about-us", label: "About" },
+  { href: "/trips", label: "Trips" },
+  { href: "/apply", label: "Apply" },
+  { href: "/donation", label: "Donation" },
+  { href: "/contactus", label: "Contact" },
+];
+
+const navMore = [
+  { href: "/events", label: "Events" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/donors", label: "Donors" },
+];
+
+function linkClass(path: string, currentPath: string) {
+  const active = currentPath === path;
+  return active ? "text-primary" : "text-zinc-600 hover:text-primary";
+}
+
+const pathRaw = Astro.url.pathname.replace(/\/$/, "") || "/";
+const moreMenuActive = navMore.some((item) => pathRaw === item.href);
+---
+
+<nav
+  class:list={[
+    "fixed top-0 z-50 w-full border-b transition-all duration-500 ease-spring",
+    solidNav
+      ? "border-zinc-200/80 bg-white/85 backdrop-blur-md"
+      : "border-transparent bg-transparent",
+  ]}
+  x-data={`{ scrolled: false, mobileOpen: false, moreOpen: false, forceSolid: ${solidNav} }`}
+  @scroll.window="if (!forceSolid) scrolled = window.pageYOffset > 20"
+  :class="forceSolid || scrolled || mobileOpen ? 'border-zinc-200/80 bg-white/85 backdrop-blur-md' : 'border-transparent bg-transparent'"
+>
+  <div
+    class:list={[
+      "mx-auto flex h-24 max-w-7xl items-center justify-between gap-4 px-6 transition-all duration-700 ease-spring",
+      solidNav && "py-4",
+    ]}
+    :class="forceSolid || scrolled ? 'py-4' : 'py-8'"
+  >
+    <a href="/" class="flex shrink-0 items-center gap-3">
+      <img
+        src={siteImages.logo}
+        alt="Fearless Outdoorsman"
+        class="h-11 w-auto md:h-[3.25rem]"
+        width="120"
+        height="66"
+      />
+    </a>
+    <div class="hidden items-center gap-5 lg:flex xl:gap-7">
+      {navPrimary.map(({ href, label }) => (
+        <a href={href} class:list={["text-sm font-medium transition-colors duration-300", linkClass(href, pathRaw)]}>
+          {label}
+        </a>
+      ))}
+      <div class="relative" @click.outside="moreOpen = false">
+        <button
+          type="button"
+          class:list={[
+            "inline-flex items-center gap-1 text-sm font-medium transition-colors duration-300",
+            moreMenuActive ? "text-primary" : "text-zinc-600 hover:text-primary",
+          ]}
+          x-bind:aria-expanded="moreOpen"
+          aria-haspopup="menu"
+          aria-controls="nav-more-menu"
+          id="nav-more-trigger"
+          @click="moreOpen = !moreOpen"
+        >
+          More
+          <iconify-icon
+            icon="solar:alt-arrow-down-linear"
+            class="text-base transition-transform duration-200"
+            x-bind:class="moreOpen ? 'rotate-180' : ''"
+            style="stroke-width: 1.5;"
+          ></iconify-icon>
+        </button>
+        <div
+          id="nav-more-menu"
+          role="menu"
+          aria-labelledby="nav-more-trigger"
+          class="absolute right-0 top-full z-50 mt-2 min-w-[11rem] rounded-xl border border-zinc-200/90 bg-white/95 py-2 shadow-lg backdrop-blur-md"
+          x-show="moreOpen"
+          x-transition:enter="transition ease-out duration-150"
+          x-transition:enter-start="opacity-0 translate-y-1"
+          x-transition:enter-end="opacity-100 translate-y-0"
+          x-transition:leave="transition ease-in duration-100"
+          x-transition:leave-start="opacity-100 translate-y-0"
+          x-transition:leave-end="opacity-0 translate-y-1"
+          x-cloak
+        >
+          {navMore.map(({ href, label }) => (
+            <a
+              href={href}
+              role="menuitem"
+              class:list={[
+                "block px-4 py-2.5 text-sm font-medium transition-colors",
+                linkClass(href, pathRaw),
+                pathRaw === href ? "bg-primary/5" : "hover:bg-zinc-50",
+              ]}
+              @click="moreOpen = false"
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <a
+        href={donateUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hidden rounded-full border px-4 py-2.5 text-xs font-semibold uppercase tracking-wide transition-all duration-500 sm:inline-flex md:px-5"
+        :class="forceSolid || scrolled ? 'border-primary/25 bg-primary/5 text-primary hover:border-accent hover:bg-accent hover:text-white' : 'border-primary bg-primary text-white hover:border-secondary hover:bg-secondary'"
+      >
+        Donate
+      </a>
+      <button
+        type="button"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-200/80 text-zinc-700 transition-colors hover:bg-zinc-100 lg:hidden"
+        x-bind:aria-expanded="mobileOpen"
+        aria-controls="site-mobile-nav"
+        @click="mobileOpen = !mobileOpen"
+      >
+        <span class="sr-only">Menu</span>
+        <iconify-icon icon="solar:hamburger-menu-linear" class="text-xl" style="stroke-width: 1.5;"></iconify-icon>
+      </button>
+    </div>
+  </div>
+  <div
+    id="site-mobile-nav"
+    class="border-t border-zinc-200/80 bg-white/95 px-6 py-4 backdrop-blur-md lg:hidden"
+    x-show="mobileOpen"
+    x-transition
+    x-cloak
+  >
+    <div class="flex flex-col gap-1 text-sm font-medium text-zinc-700">
+      <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-zinc-500">Menu</p>
+      {navPrimary.map(({ href, label }) => (
+        <a href={href} class="rounded-lg py-2.5 pl-2 hover:bg-zinc-100 hover:text-primary" @click="mobileOpen = false">
+          {label}
+        </a>
+      ))}
+      <p class="mb-1 mt-4 text-xs font-semibold uppercase tracking-widest text-zinc-500">Explore</p>
+      {navMore.map(({ href, label }) => (
+        <a href={href} class="rounded-lg py-2.5 pl-2 hover:bg-zinc-100 hover:text-primary" @click="mobileOpen = false">
+          {label}
+        </a>
+      ))}
+      <a
+        href={donateUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-2 rounded-full bg-accent py-3 text-center text-sm font-semibold text-white"
+        @click="mobileOpen = false"
+      >
+        Donate
+      </a>
+    </div>
+  </div>
+</nav>

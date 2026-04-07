@@ -1,0 +1,73 @@
+---
+import Layout from "../layouts/Layout.astro";
+import InteriorChrome from "../components/InteriorChrome.astro";
+import PageHero from "../components/PageHero.astro";
+import PageIntro from "../components/PageIntro.astro";
+import "../styles/global.css";
+import { pageHeroImages } from "../data/site-images";
+import { donateUrl } from "../data/site";
+---
+
+<Layout
+  title="Donors | Fearless Outdoorsman"
+  description="Thank you to the donors and partners who make no-cost hunting and fishing trips possible for children and veterans — and how your gift fuels every outing."
+>
+  <InteriorChrome>
+    <PageHero
+      src={pageHeroImages.donors}
+      alt="Community and outdoor moments made possible by donor support — Fearless Outdoorsman"
+    />
+    <main class="mx-auto max-w-3xl px-6 pb-32 pt-10 md:pt-14">
+      <PageIntro label="Gratitude" />
+      <h1 class="font-heading text-4xl font-semibold tracking-tighter text-primary md:text-5xl lg:text-6xl">
+        Our donors make the mission real
+      </h1>
+      <div class="mt-10 space-y-6 text-base leading-relaxed text-zinc-600">
+        <p>
+          Fearless Outdoorsman runs on generosity. Donors cover travel, licenses, guides, gear, meals, and the quiet
+          logistics that let participants focus on healing outdoors — not on cost.
+        </p>
+        <p>
+          Whether you give once, monthly, or through a sponsorship, you are part of a community that shows up for kids
+          facing life-threatening illness and for veterans carrying trauma. That support turns into elk camps, fishing
+          days, mentorship, and memories that outlast any single season.
+        </p>
+      </div>
+
+      <section class="mt-14 space-y-6">
+        <h2 class="font-heading text-2xl font-semibold tracking-tight text-primary">What your gift supports</h2>
+        <ul class="list-inside list-disc space-y-3 text-base leading-relaxed text-zinc-600 marker:text-primary">
+          <li>Trip logistics and safe, guided experiences in the field</li>
+          <li>Gear and provisions so families are not burdened by expense</li>
+          <li>Volunteer coordination and participant support</li>
+          <li>Storytelling and outreach so more families find the program</li>
+        </ul>
+      </section>
+
+      <section
+        class="mt-16 rounded-2xl border border-zinc-200/80 bg-white p-8 shadow-sm transition-colors duration-500 hover:border-primary/20 hover:shadow-md md:p-10"
+      >
+        <h2 class="font-heading text-2xl font-semibold tracking-tight text-primary">Give today</h2>
+        <p class="mt-4 text-base leading-relaxed text-zinc-600">
+          Ready to fund the next trip? Secure checkout is through Square; you will receive a receipt for your records.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a
+            href={donateUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-[0_1px_5px_rgba(0,0,0,0.4)] transition-all duration-500 ease-spring hover:scale-[1.02] hover:bg-accent/90"
+          >
+            Donate now
+          </a>
+          <a
+            href="/contactus"
+            class="rounded-full border border-primary px-6 py-3 text-sm font-semibold text-primary transition hover:bg-primary/5"
+          >
+            Contact us
+          </a>
+        </div>
+      </section>
+    </main>
+  </InteriorChrome>
+</Layout>

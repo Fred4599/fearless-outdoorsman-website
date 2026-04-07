@@ -1,0 +1,74 @@
+---
+import Layout from "../layouts/Layout.astro";
+import InteriorChrome from "../components/InteriorChrome.astro";
+import PageHero from "../components/PageHero.astro";
+import PageIntro from "../components/PageIntro.astro";
+import "../styles/global.css";
+import { pageHeroImages } from "../data/site-images";
+import { upcomingTrips, upcomingTripsYear } from "../data/upcoming-trips";
+import { donateUrl } from "../data/site";
+---
+
+<Layout
+  title="Trips | Fearless Outdoorsman"
+  description="Upcoming 2026 youth hunts with Fearless Outdoorsman — Idaho elk, Alaska grizzly, Oregon elk — and how to support each journey."
+>
+  <InteriorChrome>
+    <PageHero
+      src={pageHeroImages.trips}
+      alt="Participants and mentors in the field during a Fearless Outdoorsman hunt"
+    />
+    <main class="mx-auto max-w-7xl px-6 pb-32 pt-10 md:pt-14">
+      <div class="max-w-3xl">
+        <PageIntro label="In the field" />
+        <h1 class="font-heading text-4xl font-semibold tracking-tighter text-primary md:text-5xl lg:text-6xl">
+          Fearless Outdoorsman trips
+        </h1>
+        <p class="mt-6 text-base leading-relaxed text-zinc-600">
+          Upcoming hunting and fishing adventures with Fearless Outdoorsman are built to heal and empower children with
+          life-threatening illnesses and veterans with trauma. Here are the youth trips on our calendar for {upcomingTripsYear}
+          — each one a chance to connect with the wild, build confidence, and lean on mentors who show up in the field.
+        </p>
+
+        <p class="mt-4 text-xs font-medium uppercase tracking-widest text-zinc-500">
+          Our upcoming trips · {upcomingTripsYear}
+        </p>
+      </div>
+
+      <div
+        class="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-8 lg:grid-cols-3 lg:gap-8"
+      >
+        {upcomingTrips.map((trip) => (
+          <article
+            class="flex h-full flex-col rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-sm transition-colors duration-500 hover:border-primary/20 hover:shadow-md sm:p-8"
+          >
+            <h2 class="font-heading text-xl font-semibold tracking-tight text-zinc-900 sm:text-2xl">
+              {trip.participant} — {trip.destination}
+            </h2>
+            <p class="mt-2 text-sm font-medium text-zinc-500">{trip.species}</p>
+            <div class="mt-6 overflow-hidden rounded-xl bg-zinc-100 shadow-sm ring-1 ring-zinc-200/80">
+              <img
+                src={trip.imageSrc}
+                width={960}
+                height={540}
+                decoding="async"
+                class="aspect-[16/10] w-full object-cover object-center"
+                alt={trip.imageAlt}
+              />
+            </div>
+            <p class="mt-6 flex-grow text-base leading-relaxed text-zinc-600">{trip.description}</p>
+            <a
+              href={donateUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-accent transition hover:text-primary"
+            >
+              Donate today
+              <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+            </a>
+          </article>
+        ))}
+      </div>
+    </main>
+  </InteriorChrome>
+</Layout>
