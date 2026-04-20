@@ -7,11 +7,51 @@ import "../styles/global.css";
 import { pageHeroImages } from "../data/site-images";
 import { upcomingTrips, upcomingTripsYear } from "../data/upcoming-trips";
 import { donateUrl } from "../data/site";
+import { buildBreadcrumbSchema, siteUrl } from "../data/seo";
+
+const tripsSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${siteUrl}/trips#collection`,
+  url: `${siteUrl}/trips`,
+  name: `${upcomingTripsYear} youth hunts with Fearless Outdoorsman`,
+  description:
+    `Upcoming ${upcomingTripsYear} hunting and fishing trips with Fearless Outdoorsman — fully-guided, no-cost outdoor adventures for children with life-threatening illnesses and veterans with trauma.`,
+  about: { "@id": `${siteUrl}/#organization` },
+  isPartOf: { "@id": `${siteUrl}/#website` },
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: upcomingTrips.length,
+    itemListElement: upcomingTrips.map((trip, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "TouristTrip",
+        name: `${trip.participant} — ${trip.destination} ${trip.species} hunt`,
+        description: trip.description,
+        touristType: "Youth participant on a Fearless Outdoorsman guided hunt",
+        provider: { "@id": `${siteUrl}/#organization` },
+        itinerary: {
+          "@type": "Place",
+          name: trip.destination,
+          address: { "@type": "PostalAddress", addressRegion: trip.destination, addressCountry: "US" },
+        },
+      },
+    })),
+  },
+};
+
+const breadcrumbs = buildBreadcrumbSchema([
+  { name: "Home", item: "/" },
+  { name: "Trips", item: "/trips" },
+]);
 ---
 
 <Layout
-  title="Trips | Fearless Outdoorsman"
-  description="Upcoming 2026 youth hunts with Fearless Outdoorsman — Idaho elk, Alaska grizzly, Oregon elk — and how to support each journey."
+  title={`${upcomingTripsYear} Youth Hunts | Fearless Outdoorsman — Idaho, Oregon & Alaska`}
+  description={`See the ${upcomingTripsYear} Fearless Outdoorsman calendar: Idaho elk, Alaska grizzly, and Oregon elk — no-cost, fully-guided hunting trips for children with life-threatening illnesses and veterans with trauma.`}
+  keywords={["2026 youth hunts", "nonprofit elk hunt Idaho", "grizzly hunt Alaska nonprofit", "Oregon elk hunt nonprofit", "kids hunting trip sponsor", "veteran hunting trip sponsor"]}
+  schema={[tripsSchema, breadcrumbs]}
 >
   <InteriorChrome>
     <PageHero

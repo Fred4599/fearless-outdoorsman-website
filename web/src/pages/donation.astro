@@ -6,11 +6,37 @@ import PageIntro from "../components/PageIntro.astro";
 import "../styles/global.css";
 import { pageHeroImages } from "../data/site-images";
 import { donateUrl } from "../data/site";
+import { buildBreadcrumbSchema, siteUrl } from "../data/seo";
+
+const donateSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${siteUrl}/donation#donatepage`,
+  url: `${siteUrl}/donation`,
+  name: "Donate to Fearless Outdoorsman — Idaho hunting and veterans nonprofit",
+  description:
+    "Support Fearless Outdoorsman — an Idaho hunting nonprofit, veterans nonprofit, and kids-with-illness nonprofit. Donations fund guided hunts, fishing trips, gear, licenses, and travel for children with life-threatening illnesses and veterans with trauma.",
+  about: { "@id": `${siteUrl}/#organization` },
+  isPartOf: { "@id": `${siteUrl}/#website` },
+  potentialAction: {
+    "@type": "DonateAction",
+    name: "Donate via Square",
+    target: donateUrl,
+    recipient: { "@id": `${siteUrl}/#organization` },
+  },
+};
+
+const breadcrumbs = buildBreadcrumbSchema([
+  { name: "Home", item: "/" },
+  { name: "Donate", item: "/donation" },
+]);
 ---
 
 <Layout
-  title="Donate | Fearless Outdoorsman"
-  description="Donate to Fearless Outdoorsman — your gift funds healing outdoor experiences for children with life-threatening illnesses and veterans with trauma."
+  title="Donate to Fearless Outdoorsman | Hunting & Veterans Nonprofit in Idaho"
+  description="Donate to Fearless Outdoorsman, an Idaho hunting nonprofit and veterans nonprofit. Your gift funds no-cost guided hunting and fishing trips for children with life-threatening illnesses and veterans with PTSD or service-connected trauma."
+  keywords={["donate hunting nonprofit", "donate veterans nonprofit Idaho", "donate kids with cancer outdoor nonprofit", "Square donation Fearless Outdoorsman", "tax deductible hunting charity Idaho"]}
+  schema={[donateSchema, breadcrumbs]}
 >
   <InteriorChrome>
     <PageHero

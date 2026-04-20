@@ -6,11 +6,31 @@ import PageIntro from "../components/PageIntro.astro";
 import "../styles/global.css";
 import { pageHeroImages } from "../data/site-images";
 import { donateUrl } from "../data/site";
+import { buildBreadcrumbSchema, siteUrl } from "../data/seo";
+
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "@id": `${siteUrl}/about-us#aboutpage`,
+  url: `${siteUrl}/about-us`,
+  name: "About Fearless Outdoorsman — Idaho hunting and veterans nonprofit",
+  description:
+    "The story and mission of Fearless Outdoorsman: a hunting nonprofit, veterans nonprofit, and kids-with-illness nonprofit based in Meridian, Idaho, founded by outdoor enthusiasts, healthcare professionals, and veteran advocates.",
+  mainEntity: { "@id": `${siteUrl}/#organization` },
+  isPartOf: { "@id": `${siteUrl}/#website` },
+};
+
+const breadcrumbs = buildBreadcrumbSchema([
+  { name: "Home", item: "/" },
+  { name: "About us", item: "/about-us" },
+]);
 ---
 
 <Layout
-  title="About Us | Fearless Outdoorsman"
-  description="Founded by outdoor enthusiasts, healthcare professionals, and veteran advocates — safe, inclusive hunting and fishing experiences at no cost for children and veterans."
+  title="About Fearless Outdoorsman | Idaho Hunting, Veterans & Kids-with-Illness Nonprofit"
+  description="Founded by outdoor enthusiasts, healthcare professionals, and veteran advocates — Fearless Outdoorsman is a Meridian, Idaho nonprofit providing safe, fully-guided hunting and fishing trips at no cost to children with life-threatening illnesses and veterans with PTSD or service-connected trauma."
+  keywords={["about Fearless Outdoorsman", "Idaho nonprofit founders", "veterans nonprofit mission", "kids illness outdoor nonprofit", "hunting therapy Idaho"]}
+  schema={[aboutSchema, breadcrumbs]}
 >
   <InteriorChrome>
     <PageHero
@@ -69,7 +89,7 @@ import { donateUrl } from "../data/site";
             href={donateUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="rounded-full border border-primary px-6 py-3 text-sm font-semibold text-primary transition hover:bg-primary/5"
+            class="rounded-full border border-secondary px-6 py-3 text-sm font-semibold text-secondary transition hover:bg-secondary/5"
           >
             Donate today
           </a>

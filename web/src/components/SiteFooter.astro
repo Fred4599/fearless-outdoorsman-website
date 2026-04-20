@@ -58,27 +58,34 @@ const year = new Date().getFullYear();
         <h4 class="mb-6 text-xs font-semibold uppercase tracking-widest text-primary">Explore</h4>
         <ul class="space-y-4 text-sm text-zinc-600">
           <li>
-            <a href="/about-us" class="inline-block transition-all duration-300 hover:translate-x-1 hover:text-primary"
+            <a href="/about-us" class="inline-block transition-all duration-300 hover:translate-x-1 hover:text-secondary"
               >About us</a
             >
           </li>
           <li>
-            <a href="/trips" class="inline-block transition-all duration-300 hover:translate-x-1 hover:text-primary">Trips</a>
+            <a href="/trips" class="inline-block transition-all duration-300 hover:translate-x-1 hover:text-secondary">Trips</a>
           </li>
           <li>
-            <a href="/events" class="inline-block transition-all duration-300 hover:translate-x-1 hover:text-primary">Events</a>
+            <a href="/events" class="inline-block transition-all duration-300 hover:translate-x-1 hover:text-secondary">Events</a>
           </li>
           <li>
-            <a href="/gallery" class="inline-block transition-all duration-300 hover:translate-x-1 hover:text-primary">Gallery</a>
+            <a
+              href="/golf-tournament"
+              class="inline-block transition-all duration-300 hover:translate-x-1 hover:text-secondary"
+              >June 6 golf fundraiser</a
+            >
           </li>
           <li>
-            <a href="/apply" class="inline-block transition-all duration-300 hover:translate-x-1 hover:text-primary">Apply</a>
+            <a href="/gallery" class="inline-block transition-all duration-300 hover:translate-x-1 hover:text-secondary">Gallery</a>
           </li>
           <li>
-            <a href="/donors" class="inline-block transition-all duration-300 hover:translate-x-1 hover:text-primary">Donors</a>
+            <a href="/apply" class="inline-block transition-all duration-300 hover:translate-x-1 hover:text-secondary">Apply</a>
           </li>
           <li>
-            <a href="/donation" class="inline-block transition-all duration-300 hover:translate-x-1 hover:text-primary"
+            <a href="/donors" class="inline-block transition-all duration-300 hover:translate-x-1 hover:text-secondary">Donors</a>
+          </li>
+          <li>
+            <a href="/donation" class="inline-block transition-all duration-300 hover:translate-x-1 hover:text-secondary"
               >Donation</a
             >
           </li>
@@ -89,11 +96,11 @@ const year = new Date().getFullYear();
         <h4 class="mb-6 text-xs font-semibold uppercase tracking-widest text-primary">Contact</h4>
         <ul class="space-y-4 text-sm text-zinc-600">
           <li>
-            <a href={`tel:${phoneTel}`} class="hover:text-primary">{phone}</a>
+            <a href={`tel:${phoneTel}`} class="hover:text-secondary">{phone}</a>
           </li>
           <li class="max-w-[220px] leading-relaxed">{address}</li>
           <li>
-            <a href="/contactus" class="inline-flex items-center gap-2 hover:text-primary">
+            <a href="/contactus" class="inline-flex items-center gap-2 hover:text-secondary">
               Contact form
               <iconify-icon icon="solar:arrow-right-linear" class="text-xs"></iconify-icon>
             </a>
@@ -120,8 +127,8 @@ const year = new Date().getFullYear();
         © {year} Fearless Outdoorsman. All rights reserved.
       </div>
       <div class="flex flex-wrap justify-center gap-6 text-xs font-medium text-zinc-500">
-        <a href="/privatepolicy" class="transition-colors hover:text-primary">Privacy policy</a>
-        <a href="/terms" class="transition-colors hover:text-primary">Terms</a>
+        <a href="/privatepolicy" class="transition-colors hover:text-secondary">Privacy policy</a>
+        <a href="/terms" class="transition-colors hover:text-secondary">Terms</a>
       </div>
     </div>
   </div>

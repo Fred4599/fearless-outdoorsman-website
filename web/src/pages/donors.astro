@@ -6,11 +6,31 @@ import PageIntro from "../components/PageIntro.astro";
 import "../styles/global.css";
 import { pageHeroImages } from "../data/site-images";
 import { donateUrl } from "../data/site";
+import { buildBreadcrumbSchema, siteUrl } from "../data/seo";
+
+const donorsSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${siteUrl}/donors#donorspage`,
+  url: `${siteUrl}/donors`,
+  name: "Donors — Fearless Outdoorsman",
+  description:
+    "How donor support powers Fearless Outdoorsman — funding no-cost hunting and fishing trips for children with life-threatening illnesses and veterans with trauma.",
+  about: { "@id": `${siteUrl}/#organization` },
+  isPartOf: { "@id": `${siteUrl}/#website` },
+};
+
+const breadcrumbs = buildBreadcrumbSchema([
+  { name: "Home", item: "/" },
+  { name: "Donors", item: "/donors" },
+]);
 ---
 
 <Layout
-  title="Donors | Fearless Outdoorsman"
-  description="Thank you to the donors and partners who make no-cost hunting and fishing trips possible for children and veterans — and how your gift fuels every outing."
+  title="Donors & Sponsors | Fearless Outdoorsman Hunting & Veterans Nonprofit"
+  description="Meet the donors and sponsors of Fearless Outdoorsman — an Idaho hunting nonprofit and veterans nonprofit. Your gift covers guides, gear, licenses, travel, and meals so participants focus on healing outdoors."
+  keywords={["Fearless Outdoorsman donors", "sponsor hunting nonprofit", "support veterans nonprofit Idaho", "fund kids with illness hunting trip"]}
+  schema={[donorsSchema, breadcrumbs]}
 >
   <InteriorChrome>
     <PageHero

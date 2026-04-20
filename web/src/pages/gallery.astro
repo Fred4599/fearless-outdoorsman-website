@@ -7,11 +7,36 @@ import "../styles/global.css";
 import { pageHeroImages } from "../data/site-images";
 import { galleryImages } from "../data/gallery-images";
 import { donateUrl } from "../data/site";
+import { buildBreadcrumbSchema, siteUrl } from "../data/seo";
+
+const gallerySchema = {
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "@id": `${siteUrl}/gallery#gallery`,
+  url: `${siteUrl}/gallery`,
+  name: "Fearless Outdoorsman gallery — hunts, fishing, and mentorship",
+  description:
+    "Photos from real Fearless Outdoorsman trips — guided hunts, fishing days, and mentorship moments with children facing life-threatening illnesses and veterans with trauma.",
+  about: { "@id": `${siteUrl}/#organization` },
+  isPartOf: { "@id": `${siteUrl}/#website` },
+  associatedMedia: galleryImages.map((g) => ({
+    "@type": "ImageObject",
+    contentUrl: g.src.startsWith("http") ? g.src : `${siteUrl}${g.src}`,
+    description: g.alt,
+  })),
+};
+
+const breadcrumbs = buildBreadcrumbSchema([
+  { name: "Home", item: "/" },
+  { name: "Gallery", item: "/gallery" },
+]);
 ---
 
 <Layout
-  title="Gallery | Fearless Outdoorsman"
-  description="Photos from Fearless Outdoorsman trips — mentoring, healing, and adventure in the field for children and veterans."
+  title="Photo Gallery | Fearless Outdoorsman Hunting & Veterans Nonprofit"
+  description="Real photos from Fearless Outdoorsman trips — guided hunts, fishing, and mentorship for children with life-threatening illnesses and veterans with PTSD or trauma."
+  keywords={["Fearless Outdoorsman photos", "hunting nonprofit photos", "kids illness hunting gallery", "veterans hunting trip pictures"]}
+  schema={[gallerySchema, breadcrumbs]}
 >
   <InteriorChrome>
     <PageHero

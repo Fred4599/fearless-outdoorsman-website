@@ -23,8 +23,9 @@ Copy and imagery should feel confident, active, and rooted in the outdoors—not
 | Token | Hex | Role |
 |-------|-----|------|
 | Primary | `#002664` | Deep navy—brand anchor, headers, strong UI blocks |
-| Secondary | `#062D97` | Rich blue—secondary actions, supporting surfaces |
-| Accent | `#BB133E` | Red—primary CTAs, links, emphasis |
+| Secondary | `#BB133E` | Fearless red—secondary brand color, nav/footer hovers, focus rings, outline buttons |
+| Support | `#062D97` | Rich blue—alternate actions (maps to Tailwind `support`) |
+| Accent | `#BB133E` | Same red as secondary—solid CTAs, high-emphasis links |
 | Background | `#FFFFFF` | Page / card backgrounds |
 | Text (primary) | `#BB133E` | *Note: same as accent—consider using navy `#002664` or near-black for long body copy for readability; reserve red for headlines and links if the live site does that.* |
 | Link | `#BB133E` | Default link color |
@@ -32,7 +33,7 @@ Copy and imagery should feel confident, active, and rooted in the outdoors—not
 **Quick pairs**
 
 - Primary button: accent background `#BB133E`, white text `#FFFFFF`.
-- Secondary button: secondary blue `#062D97`, white text `#FFFFFF`.
+- Secondary (outline) button: border/text `#BB133E`, subtle fill on hover; or support blue `#062D97` with white text when you want a non-red alternate.
 
 ---
 
@@ -99,16 +100,15 @@ Load **Outfit** and **Poppins** from Google Fonts (or your font host) with weigh
 
 **Example label from live patterns:** “Donate Today” (high-emphasis CTA).
 
-### Secondary button
+### Secondary / outline button
 
 | Property | Value |
 |----------|--------|
-| Background | `#062D97` |
-| Text | `#FFFFFF` |
+| Border & text | `#BB133E` (outline), or solid `#062D97` with white text for support style |
 | Border radius | 4px |
-| Shadow | `rgba(0, 0, 0, 0.4) 0px 1px 5px 0px` |
+| Shadow | optional; match primary when solid |
 
-**Example label from live patterns:** “Read More” (supporting action).
+**Example labels:** “Donate today” (outline), “Read More” (support blue if desired).
 
 ---
 

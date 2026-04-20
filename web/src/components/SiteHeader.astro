@@ -19,13 +19,14 @@ const navPrimary = [
 
 const navMore = [
   { href: "/events", label: "Events" },
+  { href: "/golf-tournament", label: "June 6 golf" },
   { href: "/gallery", label: "Gallery" },
   { href: "/donors", label: "Donors" },
 ];
 
 function linkClass(path: string, currentPath: string) {
   const active = currentPath === path;
-  return active ? "text-primary" : "text-zinc-600 hover:text-primary";
+  return active ? "text-primary" : "text-zinc-600 hover:text-secondary";
 }
 
 const pathRaw = Astro.url.pathname.replace(/\/$/, "") || "/";
@@ -70,7 +71,7 @@ const moreMenuActive = navMore.some((item) => pathRaw === item.href);
           type="button"
           class:list={[
             "inline-flex items-center gap-1 text-sm font-medium transition-colors duration-300",
-            moreMenuActive ? "text-primary" : "text-zinc-600 hover:text-primary",
+            moreMenuActive ? "text-primary" : "text-zinc-600 hover:text-secondary",
           ]}
           x-bind:aria-expanded="moreOpen"
           aria-haspopup="menu"
@@ -149,13 +150,13 @@ const moreMenuActive = navMore.some((item) => pathRaw === item.href);
     <div class="flex flex-col gap-1 text-sm font-medium text-zinc-700">
       <p class="mb-2 text-xs font-semibold uppercase tracking-widest text-zinc-500">Menu</p>
       {navPrimary.map(({ href, label }) => (
-        <a href={href} class="rounded-lg py-2.5 pl-2 hover:bg-zinc-100 hover:text-primary" @click="mobileOpen = false">
+        <a href={href} class="rounded-lg py-2.5 pl-2 hover:bg-zinc-100 hover:text-secondary" @click="mobileOpen = false">
           {label}
         </a>
       ))}
       <p class="mb-1 mt-4 text-xs font-semibold uppercase tracking-widest text-zinc-500">Explore</p>
       {navMore.map(({ href, label }) => (
-        <a href={href} class="rounded-lg py-2.5 pl-2 hover:bg-zinc-100 hover:text-primary" @click="mobileOpen = false">
+        <a href={href} class="rounded-lg py-2.5 pl-2 hover:bg-zinc-100 hover:text-secondary" @click="mobileOpen = false">
           {label}
         </a>
       ))}
