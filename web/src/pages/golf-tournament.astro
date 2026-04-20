@@ -5,13 +5,13 @@ import PageHero from "../components/PageHero.astro";
 import PageIntro from "../components/PageIntro.astro";
 import "../styles/global.css";
 import { pageHeroImages } from "../data/site-images";
-import { contactEmail, donateUrl, phone, phoneTel, address } from "../data/site";
+import { contactEmail, donateUrl, phone, phoneTel } from "../data/site";
 import { formatEventDate, golfFundraiserDateIso } from "../data/events";
 import { buildBreadcrumbSchema, defaultOgImage, siteUrl } from "../data/seo";
 
-const pageTitle = "June 6 Golf Tournament & Fundraiser | Fearless Outdoorsman Meridian, Idaho";
+const pageTitle = "June 6 Golf Tournament & Fundraiser | Eagle Hills Golf Course, Eagle, Idaho";
 const pageDescription =
-  "Saturday, June 6, 2026 in Meridian, Idaho — annual golf tournament, live auction, dinner, and limited gun-raffle drawing (200 tickets). Open to the public. Meal tickets $25; raffle tickets $100. Every dollar supports Fearless Outdoorsman, a hunting and veterans nonprofit for children with life-threatening illnesses.";
+  "Saturday, June 6, 2026 at Eagle Hills Golf Course in Eagle, Idaho — annual golf tournament, live auction, dinner, and limited gun-raffle drawing (200 tickets). Open to the public. Meal tickets $25; raffle tickets $100. Every dollar supports Fearless Outdoorsman, a hunting and veterans nonprofit for children with life-threatening illnesses.";
 
 const golfEventSchema = {
   "@context": "https://schema.org",
@@ -19,7 +19,7 @@ const golfEventSchema = {
   "@id": `${siteUrl}/golf-tournament#event`,
   name: "Fearless Outdoorsman Annual Golf Tournament & Fundraiser",
   description:
-    "Annual golf tournament, live auction, dinner, and gun raffle in Meridian, Idaho — supporting Fearless Outdoorsman's mission of no-cost hunting and fishing trips for children with life-threatening illnesses and veterans with trauma.",
+    "Annual golf tournament, live auction, dinner, and gun raffle at Eagle Hills Golf Course in Eagle, Idaho — supporting Fearless Outdoorsman's mission of no-cost hunting and fishing trips for children with life-threatening illnesses and veterans with trauma.",
   startDate: golfFundraiserDateIso,
   endDate: golfFundraiserDateIso,
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
@@ -27,13 +27,13 @@ const golfEventSchema = {
   isAccessibleForFree: false,
   location: {
     "@type": "Place",
-    name: "Meridian, Idaho — venue to be confirmed",
+    name: "Eagle Hills Golf Course",
     address: {
       "@type": "PostalAddress",
-      streetAddress: "822 E. Ustick Rd.",
-      addressLocality: "Meridian",
+      streetAddress: "605 N Edgewood Ln",
+      addressLocality: "Eagle",
       addressRegion: "ID",
-      postalCode: "83646",
+      postalCode: "83616",
       addressCountry: "US",
     },
   },
@@ -71,7 +71,7 @@ const golfEventSchema = {
   },
   about: { "@id": `${siteUrl}/#organization` },
   keywords:
-    "golf tournament fundraiser Meridian Idaho, hunting nonprofit fundraiser, veterans nonprofit fundraiser, kids with illness nonprofit event, gun raffle fundraiser Idaho",
+    "golf tournament fundraiser Eagle Idaho, Eagle Hills Golf Course charity event, hunting nonprofit fundraiser, veterans nonprofit fundraiser, kids with illness nonprofit event, gun raffle fundraiser Idaho",
 };
 
 const breadcrumbs = buildBreadcrumbSchema([
@@ -136,7 +136,7 @@ const eventDayLabel = formatEventDate(golfFundraiserDateIso);
   title={pageTitle}
   description={pageDescription}
   socialImagePath={pageHeroImages.golfTournament}
-  keywords={["golf tournament fundraiser Meridian Idaho", "June 6 golf fundraiser Idaho", "gun raffle fundraiser Idaho", "hunting nonprofit golf event", "veterans nonprofit benefit golf", "charity golf Meridian"]}
+  keywords={["golf tournament fundraiser Eagle Idaho", "Eagle Hills Golf Course fundraiser", "June 6 golf fundraiser Idaho", "gun raffle fundraiser Idaho", "hunting nonprofit golf event", "veterans nonprofit benefit golf", "charity golf Eagle Idaho"]}
   schema={[golfEventSchema, breadcrumbs]}
 >
   <InteriorChrome>
@@ -185,9 +185,9 @@ const eventDayLabel = formatEventDate(golfFundraiserDateIso);
         </div>
         <div>
           <p class="text-xs font-semibold uppercase tracking-widest text-zinc-500">Where</p>
-          <p class="mt-2 text-sm font-medium leading-relaxed text-zinc-900">{address}</p>
-          <p class="mt-2 text-sm leading-relaxed text-zinc-600">
-            Meridian, Idaho. Golf course and evening venue details will be confirmed by the team as the schedule firms up.
+          <p class="mt-2 font-heading text-lg font-semibold text-zinc-900">Eagle Hills Golf Course</p>
+          <p class="mt-1 text-sm leading-relaxed text-zinc-600">
+            605 N Edgewood Ln, Eagle, ID 83616
           </p>
         </div>
       </div>
