@@ -21,5 +21,7 @@ export const pageHeroImages = {
   legal: siteImages.hero,
   donors: "/images/extra-6626fe0603cce58130009191.png",
   events: siteImages.hero,
+  /** Annual golf fundraiser — distinct hero from general events listing. */
+  golfTournament: "/images/extra-6626fe928381f207401326c3.png",
   gallery: "/images/extra-6626ff1a8381f2bbc61326d2.png",
 } as const;

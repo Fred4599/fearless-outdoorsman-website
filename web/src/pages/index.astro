@@ -4,29 +4,37 @@ import SiteFooter from "../components/SiteFooter.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import "../styles/global.css";
 import { siteImages } from "../data/site-images";
-import { donateUrl, pressUrl } from "../data/site";
+import { donateUrl, pressUrl, phone, phoneTel, address } from "../data/site";
+import { buildFaqSchema, siteFaqs } from "../data/seo";
+
+const homeFaqSchema = buildFaqSchema(siteFaqs);
 ---
 
 <Layout
-  title="Fearless Outdoorsman | Healing Nature, Honoring Heroes"
-  description="Non-profit hunting and fishing trips at no cost for children with life-threatening illnesses and veterans with trauma — healing through outdoor adventure in Idaho and beyond."
+  title="Fearless Outdoorsman | Hunting & Veterans Nonprofit for Kids with Illness (Meridian, Idaho)"
+  description="Fearless Outdoorsman is an Idaho hunting nonprofit and veterans nonprofit providing fully-guided hunting and fishing trips at no cost to children with life-threatening illnesses and veterans with PTSD or service-connected trauma. Based in Meridian, Idaho — serving families nationwide."
+  keywords={["Fearless Outdoorsman", "hunting nonprofit Meridian Idaho", "veterans nonprofit Idaho", "kids with illness nonprofit Idaho", "nonprofit hunting trips for kids with cancer", "free elk hunt for veterans", "Idaho 501c3 hunting charity"]}
+  schema={homeFaqSchema}
 >
   <SiteHeader />
 
   <!-- Hero -->
   <section class="relative flex h-screen items-center justify-center overflow-hidden">
     <div class="absolute inset-0 z-0" x-data="{ loaded: false }" x-init="setTimeout(() => loaded = true, 50)">
-      <img
-        src={siteImages.hero}
-        width={1080}
-        height={1080}
-        fetchpriority="high"
-        decoding="async"
+      <video
+        src="https://assets.cdn.filesafe.space/vdG8LVqi3flxnDy4gX3G/media/69e6b94a774ef96b9bdd2c93.mp4"
+        poster={siteImages.hero}
+        autoplay
+        loop
+        muted
+        playsinline
+        preload="auto"
+        aria-label="Fearless Outdoorsman participants on a guided hunt"
         class="h-full w-full origin-center object-cover object-center transition-all duration-[2000ms] ease-spring"
-        :class="loaded ? 'scale-100 opacity-50' : 'scale-110 opacity-0'"
-        alt="Young participants with their dog and waterfowl after a hunt — outdoor adventure with Fearless Outdoorsman"
-      />
-      <div class="absolute inset-0 bg-gradient-to-b from-white/50 via-zinc-50/80 to-zinc-50"></div>
+        :class="loaded ? 'scale-100 opacity-[0.35]' : 'scale-110 opacity-0'"
+        x-init="$el.playbackRate = 0.75; $el.addEventListener('loadedmetadata', () => $el.playbackRate = 0.75)"
+      ></video>
+      <div class="absolute inset-0 bg-gradient-to-b from-white/20 via-zinc-50/40 to-zinc-50"></div>
     </div>
 
     <div
@@ -61,7 +69,7 @@ import { donateUrl, pressUrl } from "../data/site";
         </a>
         <a
           href="/apply"
-          class="w-full rounded-full border border-zinc-300 bg-white/60 px-8 py-4 text-center text-sm font-medium text-zinc-800 backdrop-blur-sm transition-all duration-500 hover:border-primary/40 hover:bg-white sm:w-auto"
+          class="w-full rounded-full border border-zinc-300 bg-white/60 px-8 py-4 text-center text-sm font-medium text-zinc-800 backdrop-blur-sm transition-all duration-500 hover:border-secondary/35 hover:bg-white sm:w-auto"
         >
           Get involved
         </a>
@@ -71,7 +79,7 @@ import { donateUrl, pressUrl } from "../data/site";
     <div class="absolute bottom-12 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 text-zinc-500 opacity-80">
       <span class="text-xs font-medium uppercase tracking-widest">Scroll</span>
       <svg
-        class="h-5 w-5 shrink-0 text-primary"
+        class="h-5 w-5 shrink-0 text-secondary"
         aria-hidden="true"
         viewBox="0 0 24 24"
         fill="none"
@@ -199,9 +207,9 @@ import { donateUrl, pressUrl } from "../data/site";
           style="transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);"
         >
           <div
-            class="mb-6 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-primary/15 bg-primary/5 transition-transform duration-500 ease-spring group-hover:scale-110"
-          >
-            <iconify-icon icon="solar:heart-linear" class="text-xl text-primary" style="stroke-width: 1.5;"
+class="mb-6 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-secondary/15 bg-secondary/5 transition-transform duration-500 ease-spring group-hover:scale-110"
+            >
+            <iconify-icon icon="solar:heart-linear" class="text-xl text-secondary" style="stroke-width: 1.5;"
             ></iconify-icon>
           </div>
           <h3 class="font-heading mb-3 text-xl font-semibold tracking-tight text-zinc-900">
@@ -234,9 +242,9 @@ import { donateUrl, pressUrl } from "../data/site";
           style="transition: all 1s cubic-bezier(0.23, 1, 0.32, 1) 0.1s;"
         >
           <div
-            class="mb-6 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-primary/15 bg-primary/5 transition-transform duration-500 ease-spring group-hover:scale-110"
+            class="mb-6 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-secondary/15 bg-secondary/5 transition-transform duration-500 ease-spring group-hover:scale-110"
           >
-            <iconify-icon icon="solar:shield-check-linear" class="text-xl text-primary" style="stroke-width: 1.5;"
+            <iconify-icon icon="solar:shield-check-linear" class="text-xl text-secondary" style="stroke-width: 1.5;"
             ></iconify-icon>
           </div>
           <h3 class="font-heading mb-3 text-xl font-semibold tracking-tight text-zinc-900">Veterans with Trauma</h3>
@@ -268,9 +276,9 @@ import { donateUrl, pressUrl } from "../data/site";
           style="transition: all 1s cubic-bezier(0.23, 1, 0.32, 1) 0.2s;"
         >
           <div
-            class="mb-6 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-primary/15 bg-primary/5 transition-transform duration-500 ease-spring group-hover:scale-110"
+            class="mb-6 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-secondary/15 bg-secondary/5 transition-transform duration-500 ease-spring group-hover:scale-110"
           >
-            <iconify-icon icon="solar:leaf-linear" class="text-xl text-primary" style="stroke-width: 1.5;"
+            <iconify-icon icon="solar:leaf-linear" class="text-xl text-secondary" style="stroke-width: 1.5;"
             ></iconify-icon>
           </div>
           <h3 class="font-heading mb-3 text-xl font-semibold tracking-tight text-zinc-900">Healing and Rehabilitation</h3>
@@ -301,9 +309,9 @@ import { donateUrl, pressUrl } from "../data/site";
           style="transition: all 1s cubic-bezier(0.23, 1, 0.32, 1) 0.3s;"
         >
           <div
-            class="mb-6 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-primary/15 bg-primary/5 transition-transform duration-500 ease-spring group-hover:scale-110"
+            class="mb-6 flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-secondary/15 bg-secondary/5 transition-transform duration-500 ease-spring group-hover:scale-110"
           >
-            <iconify-icon icon="solar:users-group-two-rounded-linear" class="text-xl text-primary" style="stroke-width: 1.5;"
+            <iconify-icon icon="solar:users-group-two-rounded-linear" class="text-xl text-secondary" style="stroke-width: 1.5;"
             ></iconify-icon>
           </div>
           <h3 class="font-heading mb-3 text-xl font-semibold tracking-tight text-zinc-900">Cultural Immersions</h3>
@@ -486,11 +494,77 @@ import { donateUrl, pressUrl } from "../data/site";
             <div class="flex flex-wrap gap-3 border-t border-zinc-200/80 pt-6">
               <a href="/apply" class="text-sm font-medium text-accent hover:text-primary">Apply / volunteer</a>
               <span class="text-zinc-400">·</span>
-              <a href={donateUrl} class="text-sm font-medium text-zinc-600 hover:text-primary" target="_blank" rel="noopener noreferrer">Donate</a>
+              <a href={donateUrl} class="text-sm font-medium text-zinc-600 hover:text-secondary" target="_blank" rel="noopener noreferrer">Donate</a>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- FAQ — matches FAQPage JSON-LD and gives LLMs a clean Q/A block -->
+  <section id="faq" class="px-6 py-24 md:py-32">
+    <div class="mx-auto max-w-4xl">
+      <div class="mb-12 max-w-2xl">
+        <div class="mb-4 flex items-center gap-3">
+          <div class="h-px w-8 bg-zinc-300"></div>
+          <span class="text-xs font-medium uppercase tracking-widest text-zinc-500">Frequently asked</span>
+        </div>
+        <h2 class="font-heading text-3xl font-semibold leading-tight tracking-tight text-primary md:text-5xl">
+          What is Fearless Outdoorsman?
+        </h2>
+        <p class="mt-6 text-base leading-relaxed text-zinc-600">
+          A hunting nonprofit, veterans nonprofit, and kids-with-illness nonprofit in one — based in Meridian, Idaho,
+          serving children with life-threatening illnesses and U.S. military veterans living with trauma.
+        </p>
+      </div>
+
+      <div class="divide-y divide-zinc-200 rounded-2xl border border-zinc-200/80 bg-white shadow-sm">
+        {siteFaqs.map((faq, i) => (
+          <details class="group p-6 md:p-8" open={i === 0}>
+            <summary class="flex cursor-pointer list-none items-start justify-between gap-6">
+              <h3 class="font-heading text-lg font-semibold tracking-tight text-zinc-900 md:text-xl">
+                {faq.question}
+              </h3>
+              <iconify-icon
+                icon="solar:alt-arrow-down-linear"
+                class="mt-1 shrink-0 text-lg text-zinc-400 transition-transform group-open:rotate-180"
+              ></iconify-icon>
+            </summary>
+            <p class="mt-4 text-base leading-relaxed text-zinc-600">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Local SEO / NAP block — readable by LLMs and search engines -->
+  <section id="visit" class="bg-zinc-100/70 px-6 py-20">
+    <div class="mx-auto max-w-5xl">
+      <h2 class="font-heading text-2xl font-semibold tracking-tight text-primary md:text-3xl">
+        Fearless Outdoorsman — Meridian, Idaho
+      </h2>
+      <p class="mt-4 max-w-3xl text-base leading-relaxed text-zinc-600">
+        Fearless Outdoorsman is an Idaho-based nonprofit headquartered in Meridian, serving participants and partners
+        across Idaho, Oregon, Alaska, and the broader United States. If you are a family, a veteran, a mentor, or a
+        donor — this is where you reach us.
+      </p>
+      <dl class="mt-10 grid grid-cols-1 gap-8 md:grid-cols-3">
+        <div>
+          <dt class="text-xs font-semibold uppercase tracking-widest text-zinc-500">Address</dt>
+          <dd class="mt-2 text-base font-medium leading-relaxed text-zinc-900">{address}</dd>
+        </div>
+        <div>
+          <dt class="text-xs font-semibold uppercase tracking-widest text-zinc-500">Phone</dt>
+          <dd class="mt-2 text-base font-medium text-zinc-900">
+            <a href={`tel:+1${phoneTel}`} class="hover:text-accent">{phone}</a>
+          </dd>
+        </div>
+        <div>
+          <dt class="text-xs font-semibold uppercase tracking-widest text-zinc-500">Service area</dt>
+          <dd class="mt-2 text-base font-medium text-zinc-900">Idaho · Oregon · Alaska · USA</dd>
+        </div>
+      </dl>
     </div>
   </section>
 

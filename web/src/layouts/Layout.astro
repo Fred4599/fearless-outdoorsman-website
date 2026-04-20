@@ -1,15 +1,48 @@
 ---
 import { siteImages } from "../data/site-images";
+import {
+  buildOrganizationSchema,
+  buildWebsiteSchema,
+  defaultOgImage,
+  geo,
+  orgDescription,
+  orgKeywordsBase,
+  siteUrl,
+} from "../data/seo";
 
 interface Props {
   title: string;
   description?: string;
+  /** Absolute path under `public` for Open Graph / Twitter (e.g. `/images/hero-bg.png`). */
+  socialImagePath?: string;
+  /** Extra SEO keywords appended to the site-wide keyword list. */
+  keywords?: string[];
+  /** Additional JSON-LD schema blocks to inject (e.g. FAQPage, Event, BreadcrumbList). */
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+  /** Set true on legal/thin pages you don't want in search; defaults to indexable. */
+  noindex?: boolean;
 }
 
 const {
   title,
-  description = "Fearless Outdoorsman — hunting and fishing trips at no cost for children with life-threatening illnesses and veterans with trauma.",
+  description = orgDescription,
+  socialImagePath,
+  keywords = [],
+  schema,
+  noindex = false,
 } = Astro.props;
+
+const canonicalURL = Astro.site ? new URL(Astro.url.pathname, Astro.site) : new URL(Astro.url.pathname, siteUrl);
+const ogImageURL = socialImagePath
+  ? new URL(socialImagePath, Astro.site ?? siteUrl)
+  : new URL(defaultOgImage);
+
+const allKeywords = Array.from(new Set([...orgKeywordsBase, ...keywords])).join(", ");
+
+const organizationSchema = buildOrganizationSchema();
+const websiteSchema = buildWebsiteSchema();
+
+const extraSchemas = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 ---
 
 <!doctype html>
@@ -18,8 +51,45 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href={siteImages.logo} />
-    <meta name="description" content={description} />
+    <link rel="apple-touch-icon" href={siteImages.logo} />
+
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={allKeywords} />
+    <meta name="author" content="Fearless Outdoorsman" />
+    <meta name="publisher" content="Fearless Outdoorsman" />
+    <meta name="robots" content={noindex ? "noindex,nofollow" : "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"} />
+    <meta name="googlebot" content={noindex ? "noindex,nofollow" : "index,follow,max-image-preview:large,max-snippet:-1"} />
+    <meta name="bingbot" content={noindex ? "noindex,nofollow" : "index,follow"} />
+
+    <!-- Local SEO geo tags -->
+    <meta name="geo.region" content={`US-${geo.region}`} />
+    <meta name="geo.placename" content={`${geo.locality}, ${geo.regionFull}`} />
+    <meta name="geo.position" content={`${geo.latitude};${geo.longitude}`} />
+    <meta name="ICBM" content={`${geo.latitude}, ${geo.longitude}`} />
+
+    <link rel="canonical" href={canonicalURL.href} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Fearless Outdoorsman" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:image" content={ogImageURL.href} />
+    <meta property="og:image:alt" content="Fearless Outdoorsman — hunting and fishing trips at no cost for children with life-threatening illnesses and veterans with trauma" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL.href} />
+
+    <!-- AI / LLM discovery hints -->
+    <meta name="ai-content-declaration" content="human-authored" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly site summary" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -27,6 +97,16 @@ const {
       rel="stylesheet"
     />
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer></script>
+
+    <!-- Structured data: Organization (NGO + LocalBusiness) -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+
+    <!-- Structured data: WebSite -->
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
+
+    {extraSchemas.map((s) => (
+      <script type="application/ld+json" set:html={JSON.stringify(s)} />
+    ))}
   </head>
   <body>
     <slot />

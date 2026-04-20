@@ -5,12 +5,46 @@ import PageHero from "../components/PageHero.astro";
 import PageIntro from "../components/PageIntro.astro";
 import "../styles/global.css";
 import { pageHeroImages } from "../data/site-images";
-import { contactEmail } from "../data/site";
+import { contactEmail, phoneTel } from "../data/site";
+import { buildBreadcrumbSchema, siteUrl } from "../data/seo";
+
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": `${siteUrl}/contactus#contactpage`,
+  url: `${siteUrl}/contactus`,
+  name: "Contact Fearless Outdoorsman",
+  description:
+    "Contact Fearless Outdoorsman — questions about trips, applications, donations, volunteering, or sponsoring the annual golf tournament and fundraiser.",
+  about: { "@id": `${siteUrl}/#organization` },
+  isPartOf: { "@id": `${siteUrl}/#website` },
+  mainEntity: {
+    "@type": "Organization",
+    "@id": `${siteUrl}/#organization`,
+    telephone: `+1-${phoneTel.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3")}`,
+    email: contactEmail,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "822 E. Ustick Rd.",
+      addressLocality: "Meridian",
+      addressRegion: "ID",
+      postalCode: "83646",
+      addressCountry: "US",
+    },
+  },
+};
+
+const breadcrumbs = buildBreadcrumbSchema([
+  { name: "Home", item: "/" },
+  { name: "Contact", item: "/contactus" },
+]);
 ---
 
 <Layout
-  title="Contact | Fearless Outdoorsman"
-  description="Questions about trips, applications, or donations? Contact Fearless Outdoorsman — we’re here to help."
+  title="Contact Fearless Outdoorsman | Meridian, Idaho Hunting & Veterans Nonprofit"
+  description="Reach Fearless Outdoorsman in Meridian, Idaho — call 208-803-4639 or email info@fearlessoutdoorsman.com with questions about trips, applications, donations, volunteering, or sponsorships."
+  keywords={["contact Fearless Outdoorsman", "hunting nonprofit phone Idaho", "veterans nonprofit contact Meridian", "Meridian Idaho nonprofit phone"]}
+  schema={[contactSchema, breadcrumbs]}
 >
   <InteriorChrome>
     <PageHero

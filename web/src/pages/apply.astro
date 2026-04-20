@@ -6,14 +6,76 @@ import PageIntro from "../components/PageIntro.astro";
 import "../styles/global.css";
 import { pageHeroImages } from "../data/site-images";
 import { contactEmail, donateUrl } from "../data/site";
+import { buildBreadcrumbSchema, siteUrl } from "../data/seo";
 
 const mail = (subject: string) =>
   `mailto:${contactEmail}?subject=${encodeURIComponent(subject)}`;
+
+const applySchema = {
+  "@context": "https://schema.org",
+  "@type": ["ContactPage", "WebPage"],
+  "@id": `${siteUrl}/apply#applypage`,
+  url: `${siteUrl}/apply`,
+  name: "Apply — Fearless Outdoorsman (children, veterans, volunteers)",
+  description:
+    "Apply for a no-cost hunting or fishing trip for a qualifying child with a life-threatening illness, nominate a veteran dealing with service-connected trauma, or volunteer as a mentor with Fearless Outdoorsman.",
+  about: { "@id": `${siteUrl}/#organization` },
+  isPartOf: { "@id": `${siteUrl}/#website` },
+  significantLink: [
+    mail("Children application — Fearless Outdoorsman"),
+    mail("Veteran application — Fearless Outdoorsman"),
+    mail("Volunteer application — Fearless Outdoorsman"),
+  ],
+};
+
+const servicesSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Ways to participate with Fearless Outdoorsman",
+  itemListElement: [
+    {
+      "@type": "Service",
+      position: 1,
+      name: "Children outdoor adventure program",
+      description:
+        "Fully-guided, no-cost hunting and fishing trips for children facing life-threatening illnesses.",
+      provider: { "@id": `${siteUrl}/#organization` },
+      audience: { "@type": "PeopleAudience", audienceType: "children with life-threatening illnesses" },
+      areaServed: ["Idaho", "Oregon", "Alaska", "United States"],
+    },
+    {
+      "@type": "Service",
+      position: 2,
+      name: "Veterans outdoor healing program",
+      description:
+        "Fully-guided, no-cost hunting and fishing trips for U.S. military veterans living with PTSD, injury, or other service-connected trauma.",
+      provider: { "@id": `${siteUrl}/#organization` },
+      audience: { "@type": "PeopleAudience", audienceType: "veterans with trauma" },
+      areaServed: ["Idaho", "Oregon", "Alaska", "United States"],
+    },
+    {
+      "@type": "VolunteerAction",
+      position: 3,
+      name: "Volunteer with Fearless Outdoorsman",
+      description:
+        "Join as a mentor, field volunteer, or event helper supporting trips, orientations, and fundraising events.",
+      agent: { "@type": "Person" },
+      participant: { "@id": `${siteUrl}/#organization` },
+    },
+  ],
+};
+
+const breadcrumbs = buildBreadcrumbSchema([
+  { name: "Home", item: "/" },
+  { name: "Apply", item: "/apply" },
+]);
 ---
 
 <Layout
-  title="Apply | Fearless Outdoorsman"
-  description="Apply for a child or veteran trip, or volunteer with Fearless Outdoorsman — join the family and help put healing within reach."
+  title="Apply for a Trip | Children, Veterans & Volunteers — Fearless Outdoorsman"
+  description="Apply for a no-cost hunting or fishing trip for a child with a life-threatening illness, nominate a veteran with PTSD or service-connected trauma, or volunteer as a mentor. Fearless Outdoorsman — Meridian, Idaho."
+  keywords={["apply for free hunting trip kids", "nominate veteran for hunting trip", "volunteer hunting nonprofit Idaho", "kids illness outdoor program application", "veterans PTSD outdoor program"]}
+  schema={[applySchema, servicesSchema, breadcrumbs]}
 >
   <InteriorChrome>
     <PageHero

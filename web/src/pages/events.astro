@@ -7,13 +7,54 @@ import "../styles/global.css";
 import { pageHeroImages } from "../data/site-images";
 import { eventsSortedByDate, formatEventDate, upcomingEvents } from "../data/events";
 import { donateUrl } from "../data/site";
+import { buildBreadcrumbSchema, siteUrl } from "../data/seo";
 
 const events = eventsSortedByDate(upcomingEvents);
+
+const eventsListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Upcoming Fearless Outdoorsman events",
+  description:
+    "Fundraisers, volunteer orientations, and community gatherings with Fearless Outdoorsman — based in Meridian, Idaho.",
+  numberOfItems: events.length,
+  itemListElement: events.map((event, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Event",
+      name: event.title,
+      startDate: event.date,
+      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+      eventStatus: "https://schema.org/EventScheduled",
+      description: event.description,
+      location: {
+        "@type": "Place",
+        name: event.location,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Meridian",
+          addressRegion: "ID",
+          addressCountry: "US",
+        },
+      },
+      organizer: { "@id": `${siteUrl}/#organization` },
+      url: event.detailHref ? `${siteUrl}${event.detailHref}` : `${siteUrl}/events`,
+    },
+  })),
+};
+
+const breadcrumbs = buildBreadcrumbSchema([
+  { name: "Home", item: "/" },
+  { name: "Events", item: "/events" },
+]);
 ---
 
 <Layout
-  title="Events | Fearless Outdoorsman"
-  description="Fundraisers, volunteer gatherings, and community events with Fearless Outdoorsman — join us in Meridian and across Idaho."
+  title="Events & Fundraisers | Fearless Outdoorsman — Meridian, Idaho"
+  description="Fearless Outdoorsman events in Meridian, Idaho — annual golf tournament, benefit dinner, volunteer orientation, and youth elk season send-off. Join a hunting nonprofit and veterans nonprofit supporting kids with illness."
+  keywords={["Meridian Idaho nonprofit events", "hunting nonprofit fundraiser", "veterans nonprofit benefit dinner", "golf tournament fundraiser Idaho", "Fearless Outdoorsman volunteer orientation"]}
+  schema={[eventsListSchema, breadcrumbs]}
 >
   <InteriorChrome>
     <PageHero
@@ -42,13 +83,24 @@ const events = eventsSortedByDate(upcomingEvents);
             <h2 class="mt-3 font-heading text-xl font-semibold tracking-tight text-zinc-900 sm:text-2xl">{event.title}</h2>
             <p class="mt-2 text-sm font-medium text-zinc-500">{event.location}</p>
             <p class="mt-6 flex-grow text-base leading-relaxed text-zinc-600">{event.description}</p>
-            <a
-              href="/contactus"
-              class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-accent transition hover:text-primary"
-            >
-              Ask a question
-              <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
-            </a>
+            <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+              {event.detailHref ? (
+                <a
+                  href={event.detailHref}
+                  class="inline-flex items-center gap-2 text-sm font-semibold text-accent transition hover:text-primary"
+                >
+                  Event details
+                  <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+                </a>
+              ) : null}
+              <a
+                href="/contactus"
+                class="inline-flex items-center gap-2 text-sm font-semibold text-zinc-600 transition hover:text-primary"
+              >
+                Ask a question
+                <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
+              </a>
+            </div>
           </article>
         ))}
       </div>
