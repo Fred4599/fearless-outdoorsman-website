@@ -11,7 +11,7 @@ import { buildBreadcrumbSchema, defaultOgImage, siteUrl } from "../data/seo";
 
 const pageTitle = "June 6 Golf Tournament & Fundraiser | Eagle Hills Golf Course, Eagle, Idaho";
 const pageDescription =
-  "Saturday, June 6, 2026 at Eagle Hills Golf Course in Eagle, Idaho — annual golf tournament, live auction, dinner, and limited gun-raffle drawing (200 tickets). Open to the public. Meal tickets $25; raffle tickets $100. Every dollar supports Fearless Outdoorsman, a hunting and veterans nonprofit for children with life-threatening illnesses.";
+  "Saturday, June 6, 2026 at Eagle Hills Golf Course in Eagle, Idaho — annual golf tournament, live auction, dinner, and limited Riffle Raffle drawing (200 tickets). Open to the public. Meal tickets $25; raffle tickets $100. Every dollar supports Fearless Outdoorsman, a hunting and veterans nonprofit for children with life-threatening illnesses.";
 
 const golfEventSchema = {
   "@context": "https://schema.org",
@@ -19,7 +19,7 @@ const golfEventSchema = {
   "@id": `${siteUrl}/golf-tournament#event`,
   name: "Fearless Outdoorsman Annual Golf Tournament & Fundraiser",
   description:
-    "Annual golf tournament, live auction, dinner, and gun raffle at Eagle Hills Golf Course in Eagle, Idaho — supporting Fearless Outdoorsman's mission of no-cost hunting and fishing trips for children with life-threatening illnesses and veterans with trauma.",
+    "Annual golf tournament, live auction, dinner, and Riffle Raffle at Eagle Hills Golf Course in Eagle, Idaho — supporting Fearless Outdoorsman's mission of no-cost hunting and fishing trips for children with life-threatening illnesses and veterans with trauma.",
   startDate: golfFundraiserDateIso,
   endDate: golfFundraiserDateIso,
   eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
@@ -55,7 +55,7 @@ const golfEventSchema = {
       "@type": "Offer",
       name: "Raffle ticket",
       description:
-        "Raffle drawing on June 6 — limited to 200 tickets. Gun raffle and additional prizes; firearm transfers go through a federally licensed dealer.",
+        "Raffle drawing on June 6 — limited to 200 tickets. Riffle Raffle and additional prizes; firearm transfers go through a federally licensed dealer.",
       price: "100",
       priceCurrency: "USD",
       availability: "https://schema.org/LimitedAvailability",
@@ -71,7 +71,7 @@ const golfEventSchema = {
   },
   about: { "@id": `${siteUrl}/#organization` },
   keywords:
-    "golf tournament fundraiser Eagle Idaho, Eagle Hills Golf Course charity event, hunting nonprofit fundraiser, veterans nonprofit fundraiser, kids with illness nonprofit event, gun raffle fundraiser Idaho",
+    "golf tournament fundraiser Eagle Idaho, Eagle Hills Golf Course charity event, hunting nonprofit fundraiser, veterans nonprofit fundraiser, kids with illness nonprofit event, riffle raffle fundraiser Idaho",
 };
 
 const breadcrumbs = buildBreadcrumbSchema([
@@ -79,37 +79,6 @@ const breadcrumbs = buildBreadcrumbSchema([
   { name: "Events", item: "/events" },
   { name: "June 6 golf fundraiser", item: "/golf-tournament" },
 ]);
-
-const mealSubject = encodeURIComponent("June 6 golf fundraiser — Meal tickets");
-const mealBody = encodeURIComponent(
-  [
-    "Hello,",
-    "",
-    "I'd like to purchase meal ticket(s) for the June 6 event ($25 per person).",
-    "",
-    "Number of tickets:",
-    "Name:",
-    "Phone:",
-    "",
-    "Thank you!",
-  ].join("\n"),
-);
-
-const raffleSubject = encodeURIComponent("June 6 golf fundraiser — Raffle ticket(s)");
-const raffleBody = encodeURIComponent(
-  [
-    "Hello,",
-    "",
-    "I'd like to purchase raffle ticket(s) for the June 6 drawing ($100 per ticket, limited to 200 tickets).",
-    "",
-    "Full name:",
-    "Phone:",
-    "Email:",
-    "Number of tickets:",
-    "",
-    "Thank you!",
-  ].join("\n"),
-);
 
 const sponsorSubject = encodeURIComponent("June 6 golf fundraiser — Sponsorship");
 const sponsorBody = encodeURIComponent(
@@ -125,18 +94,42 @@ const sponsorBody = encodeURIComponent(
   ].join("\n"),
 );
 
-const mailMeal = `mailto:${contactEmail}?subject=${mealSubject}&body=${mealBody}`;
-const mailRaffle = `mailto:${contactEmail}?subject=${raffleSubject}&body=${raffleBody}`;
+const mealTicketPaymentUrl = "https://app.fearlessoutdoorsman.com/payment-link/69e7d6347dd3512d92077f13";
+const riffleRafflePaymentUrl = "https://app.fearlessoutdoorsman.com/payment-link/69e7d5b2557558e89e5219c2";
 const mailSponsor = `mailto:${contactEmail}?subject=${sponsorSubject}&body=${sponsorBody}`;
 
 const eventDayLabel = formatEventDate(golfFundraiserDateIso);
+const riffleRafflePhotos = [
+  {
+    src: "/images/riffle-raffle/riffle-raffle-1.png",
+    alt: "Riffle Raffle rifle shown side profile on a rock.",
+  },
+  {
+    src: "/images/riffle-raffle/riffle-raffle-2.png",
+    alt: "Riffle Raffle rifle setup in the field with bipod and scope.",
+  },
+  {
+    src: "/images/riffle-raffle/riffle-raffle-3.png",
+    alt: "Close-up of the Riffle Raffle stock and camo finish.",
+  },
+  {
+    src: "/images/riffle-raffle/riffle-raffle-4.png",
+    alt: "Close-up of the Riffle Raffle scope and action area.",
+  },
+];
+const tournamentSponsors = [
+  { name: "Sponsor Name", tier: "Presenting Sponsor" },
+  { name: "Sponsor Name", tier: "Gold Sponsor" },
+  { name: "Sponsor Name", tier: "Silver Sponsor" },
+  { name: "Sponsor Name", tier: "Community Sponsor" },
+];
 ---
 
 <Layout
   title={pageTitle}
   description={pageDescription}
   socialImagePath={pageHeroImages.golfTournament}
-  keywords={["golf tournament fundraiser Eagle Idaho", "Eagle Hills Golf Course fundraiser", "June 6 golf fundraiser Idaho", "gun raffle fundraiser Idaho", "hunting nonprofit golf event", "veterans nonprofit benefit golf", "charity golf Eagle Idaho"]}
+  keywords={["golf tournament fundraiser Eagle Idaho", "Eagle Hills Golf Course fundraiser", "June 6 golf fundraiser Idaho", "riffle raffle fundraiser Idaho", "hunting nonprofit golf event", "veterans nonprofit benefit golf", "charity golf Eagle Idaho"]}
   schema={[golfEventSchema, breadcrumbs]}
 >
   <InteriorChrome>
@@ -221,6 +214,50 @@ const eventDayLabel = formatEventDate(golfFundraiserDateIso);
         </div>
       </section>
 
+      <section
+        class="mt-14 rounded-2xl border border-dashed border-zinc-300/90 bg-zinc-50/80 p-8 md:p-10"
+        aria-labelledby="riffle-raffle-photos-heading"
+      >
+        <h2 id="riffle-raffle-photos-heading" class="font-heading text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">
+          Riffle Raffle preview photos
+        </h2>
+        <p class="mt-3 max-w-3xl text-base leading-relaxed text-zinc-600">
+          Tap any photo to go straight to checkout and reserve your chance in this year&apos;s drawing.
+        </p>
+        <a
+          href={riffleRafflePaymentUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Buy June 6 Riffle Raffle tickets online"
+          class="mt-5 inline-flex rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-primary/90"
+        >
+          Buy Riffle Raffle Ticket
+        </a>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+          {riffleRafflePhotos.map((photo) => (
+            <a
+              href={riffleRafflePaymentUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Buy June 6 Riffle Raffle tickets online"
+              class="group block overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:border-accent/40 hover:shadow-md"
+            >
+              <figure class="relative">
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  loading="lazy"
+                  class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.01]"
+                />
+                <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent px-4 pb-3 pt-8 text-xs font-semibold uppercase tracking-wider text-white">
+                  Buy Riffle Raffle Ticket
+                </figcaption>
+              </figure>
+            </a>
+          ))}
+        </div>
+      </section>
+
       <div class="mt-14 grid gap-8 lg:grid-cols-2 lg:gap-10">
         <section
           id="meal-tickets"
@@ -236,14 +273,16 @@ const eventDayLabel = formatEventDate(golfFundraiserDateIso);
             — for example, if you are coming for the auction, raffle, and evening program and want a seat at dinner.
           </p>
           <a
-            href={mailMeal}
-            aria-label={`Email ${contactEmail} to purchase June 6 meal tickets`}
+            href={mealTicketPaymentUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Buy June 6 meal tickets online"
             class="mt-8 inline-flex rounded-full bg-accent px-8 py-3.5 text-sm font-semibold text-white shadow-[0_1px_5px_rgba(0,0,0,0.35)] transition-all duration-500 ease-spring hover:scale-[1.02] hover:bg-accent/90"
           >
             Buy meal tickets
           </a>
           <p class="mt-4 text-xs text-zinc-500">
-            Opens your email to {contactEmail} with a pre-filled message — adjust the template as needed.
+            Opens secure checkout in a new tab.
           </p>
         </section>
 
@@ -258,7 +297,7 @@ const eventDayLabel = formatEventDate(golfFundraiserDateIso);
           </h2>
           <p class="mt-4 text-base leading-relaxed text-zinc-600">
             Drawing on <strong class="font-medium text-zinc-800">{eventDayLabel}</strong>. A limited run of two hundred
-            tickets keeps the raffle special — including our <strong class="font-medium text-zinc-800">gun raffle</strong> and
+            tickets keeps the raffle special — including our <strong class="font-medium text-zinc-800">Riffle Raffle</strong> and
             additional prizes. The exact prize list is being finalized; check back for featured guns or prize tiers, or ask
             the team for the latest lineup.
           </p>
@@ -274,14 +313,16 @@ const eventDayLabel = formatEventDate(golfFundraiserDateIso);
             <li>Email address</li>
           </ul>
           <a
-            href={mailRaffle}
-            aria-label={`Email ${contactEmail} to purchase June 6 raffle tickets`}
+            href={riffleRafflePaymentUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Buy June 6 Riffle Raffle tickets online"
             class="mt-8 inline-flex rounded-full border-2 border-primary bg-primary/5 px-8 py-3.5 text-sm font-semibold text-primary transition-all duration-500 ease-spring hover:bg-primary hover:text-white"
           >
-            Enter the raffle
+            Buy Riffle Raffle ticket(s)
           </a>
           <p class="mt-4 text-xs text-zinc-500">
-            Opens your email with fields to complete. Raffle rules and eligibility may apply; staff will confirm details.
+            Opens secure checkout in a new tab. Raffle rules and eligibility may apply; staff will confirm details.
           </p>
         </section>
       </div>
@@ -291,11 +332,41 @@ const eventDayLabel = formatEventDate(golfFundraiserDateIso);
         aria-labelledby="prizes-heading"
       >
         <h2 id="prizes-heading" class="font-heading text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">
-          Featured prizes &amp; gun raffle
+          Featured prizes &amp; Riffle Raffle
         </h2>
         <p class="mt-3 max-w-3xl text-base leading-relaxed text-zinc-600">
-          The gun raffle has been a major part of how we promote this night. We are still finalizing the exact firearm and
+          The Riffle Raffle has been a major part of how we promote this night. We are still finalizing the exact firearm and
           prize list — once it is locked in, we will highlight standout items and any prize tiers right here.
+        </p>
+      </section>
+
+      <section
+        class="mt-14 rounded-2xl border border-zinc-200/80 bg-white p-8 shadow-sm md:p-10"
+        aria-labelledby="sponsors-heading"
+      >
+        <h2 id="sponsors-heading" class="font-heading text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">
+          Thank you to this year&apos;s sponsors
+        </h2>
+        <p class="mt-3 max-w-3xl text-base leading-relaxed text-zinc-600">
+          This event is possible because of generous businesses and community partners who step up to support kids,
+          families, and veterans through Fearless Outdoorsman.
+        </p>
+        <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {tournamentSponsors.map((sponsor) => (
+            <article class="rounded-xl border border-zinc-200/80 bg-zinc-50/70 p-5">
+              {sponsor.logoSrc && (
+                <div class="mb-3 overflow-hidden rounded-lg border border-zinc-200 bg-white p-2">
+                  <img src={sponsor.logoSrc} alt={sponsor.logoAlt ?? `${sponsor.name} logo`} loading="lazy" class="h-24 w-full object-contain" />
+                </div>
+              )}
+              <p class="text-xs font-semibold uppercase tracking-widest text-accent">{sponsor.tier}</p>
+              <p class="mt-2 font-heading text-lg font-semibold text-zinc-900">{sponsor.name}</p>
+            </article>
+          ))}
+        </div>
+        <p class="mt-5 text-xs text-zinc-500">
+          Want to be listed as a sponsor?{" "}
+          <a href={mailSponsor} class="font-medium text-accent hover:text-primary">Email our team</a>.
         </p>
       </section>
 
@@ -341,26 +412,30 @@ const eventDayLabel = formatEventDate(golfFundraiserDateIso);
         </h2>
         <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <a
-            href={mailMeal}
-            aria-label="Email to purchase meal tickets"
+            href={mealTicketPaymentUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Buy June 6 meal tickets online"
             class="group flex flex-col rounded-xl border border-zinc-200/90 bg-white p-5 shadow-sm transition hover:border-accent/40 hover:shadow-md"
           >
             <span class="text-sm font-semibold text-zinc-900 group-hover:text-primary">Meal tickets</span>
             <span class="mt-1 text-xs text-zinc-500">$25 — dinner &amp; evening access</span>
             <span class="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-accent">
-              Email to purchase
+              Buy ticket(s)
               <iconify-icon icon="solar:arrow-right-linear" class="text-base"></iconify-icon>
             </span>
           </a>
           <a
-            href={mailRaffle}
-            aria-label="Email to enter the June 6 raffle"
+            href={riffleRafflePaymentUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Buy June 6 Riffle Raffle tickets online"
             class="group flex flex-col rounded-xl border border-zinc-200/90 bg-white p-5 shadow-sm transition hover:border-accent/40 hover:shadow-md"
           >
             <span class="text-sm font-semibold text-zinc-900 group-hover:text-primary">Raffle</span>
             <span class="mt-1 text-xs text-zinc-500">$100 — drawing June 6</span>
             <span class="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-accent">
-              Email to enter
+              Buy ticket(s)
               <iconify-icon icon="solar:arrow-right-linear" class="text-base"></iconify-icon>
             </span>
           </a>
