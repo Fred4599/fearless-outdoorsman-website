@@ -11,6 +11,7 @@ const routes: Array<{ path: string; changefreq: string; priority: string }> = [
   { path: "/apply", changefreq: "monthly", priority: "0.9" },
   { path: "/donation", changefreq: "monthly", priority: "0.9" },
   { path: "/donors", changefreq: "monthly", priority: "0.7" },
+  { path: "/sponsors", changefreq: "monthly", priority: "0.7" },
   { path: "/gallery", changefreq: "monthly", priority: "0.6" },
   { path: "/contactus", changefreq: "monthly", priority: "0.7" },
 ];
