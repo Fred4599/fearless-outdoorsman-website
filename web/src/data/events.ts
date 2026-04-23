@@ -21,7 +21,7 @@ export const upcomingEvents: SiteEvent[] = [
     date: golfFundraiserDateIso,
     location: "Eagle Hills Golf Course, Eagle, ID — open to the public",
     description:
-      "Join us for golf, a live auction, dinner, and our limited-ticket raffle — including our Riffle Raffle with prizes to be announced. Meal tickets are available for guests who want to attend the evening without golfing.",
+      "Join us for golf, a live auction, dinner, and our limited-ticket raffle — including our Rifle Raffle with prizes to be announced. Meal tickets are available for guests who want to attend the evening without golfing.",
     detailHref: "/golf-tournament",
   },
 ];
