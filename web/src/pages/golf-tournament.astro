@@ -11,7 +11,7 @@ import { buildBreadcrumbSchema, defaultOgImage, siteUrl } from "../data/seo";
 
 const pageTitle = "June 6 Golf Tournament & Fundraiser | Eagle Hills Golf Course, Eagle, Idaho";
 const pageDescription =
-  "Saturday, June 6, 2026 at Eagle Hills Golf Course in Eagle, Idaho — annual golf tournament, live auction, dinner, and limited Rifle Raffle drawing (200 tickets). Open to the public. Meal tickets $25; raffle tickets $100. Every dollar supports Fearless Outdoorsman, a hunting and veterans nonprofit for children with life-threatening illnesses.";
+  "Saturday, June 6, 2026 at Eagle Hills Golf Course in Eagle, Idaho — annual golf tournament, live auction, dinner, and limited Rifle Raffle drawing (200 tickets), including a complete rifle package valued at about $8,000. Open to the public. Meal tickets $25; raffle tickets $100. Every dollar supports Fearless Outdoorsman, a hunting and veterans nonprofit for children with life-threatening illnesses.";
 
 const golfEventSchema = {
   "@context": "https://schema.org",
@@ -55,7 +55,7 @@ const golfEventSchema = {
       "@type": "Offer",
       name: "Raffle ticket",
       description:
-        "Raffle drawing on June 6 — limited to 200 tickets. Rifle Raffle and additional prizes; firearm transfers go through a federally licensed dealer.",
+        "Raffle drawing on June 6 — limited to 200 tickets. Grand prize: complete rifle package (~$8,000 value) plus additional prizes; firearm transfers go through a federally licensed dealer.",
       price: "100",
       priceCurrency: "USD",
       availability: "https://schema.org/LimitedAvailability",
@@ -297,9 +297,10 @@ const tournamentSponsors = [
           </h2>
           <p class="mt-4 text-base leading-relaxed text-zinc-600">
             Drawing on <strong class="font-medium text-zinc-800">{eventDayLabel}</strong>. A limited run of two hundred
-            tickets keeps the raffle special — including our <strong class="font-medium text-zinc-800">Rifle Raffle</strong> and
-            additional prizes. The exact prize list is being finalized; check back for featured guns or prize tiers, or ask
-            the team for the latest lineup.
+            tickets keeps the raffle special. The <strong class="font-medium text-zinc-800">Rifle Raffle</strong> grand prize
+            is a <strong class="font-medium text-zinc-800">complete rifle package</strong> with approximately
+            <strong class="font-medium text-zinc-800">$8,000</strong> in value — see <strong class="font-medium text-zinc-800">Featured prizes &amp; Rifle Raffle</strong> below for
+            the full list — along with other prizes in the drawing.
           </p>
           <p class="mt-4 text-xs leading-relaxed text-zinc-500">
             Any firearm prizes transfer only through a federally licensed dealer, in compliance with applicable law.
@@ -335,8 +336,23 @@ const tournamentSponsors = [
           Featured prizes &amp; Rifle Raffle
         </h2>
         <p class="mt-3 max-w-3xl text-base leading-relaxed text-zinc-600">
-          The Rifle Raffle has been a major part of how we promote this night. We are still finalizing the exact firearm and
-          prize list — once it is locked in, we will highlight standout items and any prize tiers right here.
+          The Rifle Raffle is a centerpiece of the night. The winner receives a
+          <strong class="font-medium text-zinc-800">full rifle package</strong> with approximately
+          <strong class="font-medium text-zinc-800">$8,000</strong> in total value, including:
+        </p>
+        <ul class="mt-4 max-w-3xl list-inside list-disc space-y-2 text-base leading-relaxed text-zinc-600">
+          <li>
+            <strong class="font-medium text-zinc-800">Horizon Firearms</strong> — 7 PRC, 22-inch carbon-barrel build
+          </li>
+          <li>
+            <strong class="font-medium text-zinc-800">Leupold Mark 4HD</strong> 6-24&times;52 scope
+          </li>
+          <li>
+            <strong class="font-medium text-zinc-800">Audere SHADOW</strong> bipod
+          </li>
+        </ul>
+        <p class="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-500">
+          Additional raffle prizes may be announced closer to the event; ask the team for the latest lineup.
         </p>
       </section>
 
