@@ -215,25 +215,71 @@ const tournamentSponsors = [
       </section>
 
       <section
+        id="raffle"
         class="mt-14 rounded-2xl border border-dashed border-zinc-300/90 bg-zinc-50/80 p-8 md:p-10"
-        aria-labelledby="rifle-raffle-photos-heading"
+        aria-labelledby="raffle-heading"
       >
-        <h2 id="rifle-raffle-photos-heading" class="font-heading text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">
-          Rifle Raffle preview photos
+        <p class="text-xs font-semibold uppercase tracking-widest text-accent">Raffle</p>
+        <h2 id="raffle-heading" class="mt-2 font-heading text-2xl font-semibold tracking-tight text-zinc-900 md:text-3xl">
+          Rifle Raffle
         </h2>
-        <p class="mt-3 max-w-3xl text-base leading-relaxed text-zinc-600">
-          Tap any photo to go straight to checkout and reserve your chance in this year&apos;s drawing.
+        <p class="mt-2 font-heading text-lg font-semibold text-zinc-800 md:text-xl">$100 per ticket · 200 tickets only</p>
+        <p class="mt-4 max-w-3xl text-base leading-relaxed text-zinc-600">
+          Drawing on <strong class="font-medium text-zinc-800">{eventDayLabel}</strong>. A limited run of two hundred
+          tickets keeps the raffle special. The grand prize is a <strong class="font-medium text-zinc-800">full rifle
+          package</strong> with approximately <strong class="font-medium text-zinc-800">$8,000</strong> in total value,
+          including the items below, along with <strong class="font-medium text-zinc-800">other prizes</strong> in the
+          same drawing.
         </p>
+        <p class="mt-4 max-w-3xl text-base font-medium leading-relaxed text-zinc-800">Package includes:</p>
+        <ul class="mt-3 max-w-3xl list-inside list-disc space-y-2 text-base leading-relaxed text-zinc-600">
+          <li>
+            <strong class="font-medium text-zinc-800">Horizon Firearms</strong> — 7 PRC, 22-inch carbon-barrel build
+          </li>
+          <li>
+            <strong class="font-medium text-zinc-800">Leupold Mark 4HD</strong> 6-24&times;52 scope
+          </li>
+          <li>
+            <strong class="font-medium text-zinc-800">Audere SHADOW</strong> bipod
+          </li>
+        </ul>
+        <p class="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-500">
+          Additional raffle prizes may be announced closer to the event; ask the team for the latest lineup.
+        </p>
+        <p class="mt-4 max-w-3xl text-xs leading-relaxed text-zinc-500">
+          Any firearm prizes transfer only through a federally licensed dealer, in compliance with applicable law.
+          Winners must be eligible to possess firearms under federal and Idaho law. Staff will provide full rules and
+          transfer steps with your ticket confirmation.
+        </p>
+        <p class="mt-4 text-sm font-medium text-zinc-800">For online raffle purchases, please provide:</p>
+        <ul class="mt-2 list-inside list-disc text-sm leading-relaxed text-zinc-600">
+          <li>Full name</li>
+          <li>Phone number</li>
+          <li>Email address</li>
+        </ul>
         <a
           href={rifleRafflePaymentUrl}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Buy June 6 Rifle Raffle tickets online"
-          class="mt-5 inline-flex rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-primary/90"
+          class="mt-8 inline-flex rounded-full border-2 border-primary bg-primary/5 px-8 py-3.5 text-sm font-semibold text-primary transition-all duration-500 ease-spring hover:bg-primary hover:text-white"
         >
-          Buy Rifle Raffle Ticket
+          Buy Rifle Raffle ticket(s)
         </a>
-        <div class="mt-6 grid gap-4 sm:grid-cols-2">
+        <p class="mt-4 text-xs text-zinc-500">
+          Opens secure checkout in a new tab. Raffle rules and eligibility may apply; staff will confirm details.
+        </p>
+
+        <h3
+          class="mt-10 font-heading text-lg font-semibold tracking-tight text-zinc-900 md:text-xl"
+          id="raffle-photos-heading"
+        >
+          Package photos
+        </h3>
+        <p class="mt-2 max-w-3xl text-sm text-zinc-600">
+          Tap a photo to go straight to checkout and reserve your chance in the drawing.
+        </p>
+        <div class="mt-5 grid gap-4 sm:grid-cols-2">
           {rifleRafflePhotos.map((photo) => (
             <a
               href={rifleRafflePaymentUrl}
@@ -250,7 +296,7 @@ const tournamentSponsors = [
                   class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.01]"
                 />
                 <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent px-4 pb-3 pt-8 text-xs font-semibold uppercase tracking-wider text-white">
-                  Buy Rifle Raffle Ticket
+                  Buy Rifle Raffle ticket(s)
                 </figcaption>
               </figure>
             </a>
@@ -258,102 +304,29 @@ const tournamentSponsors = [
         </div>
       </section>
 
-      <div class="mt-14 grid gap-8 lg:grid-cols-2 lg:gap-10">
-        <section
-          id="meal-tickets"
-          class="rounded-2xl border border-zinc-200/80 bg-white p-8 shadow-sm transition-colors duration-500 hover:border-primary/15 md:p-10"
-          aria-labelledby="meal-heading"
-        >
-          <p class="text-xs font-semibold uppercase tracking-widest text-accent">Meal tickets</p>
-          <h2 id="meal-heading" class="mt-3 font-heading text-2xl font-semibold tracking-tight text-zinc-900">
-            $25 per person
-          </h2>
-          <p class="mt-4 text-base leading-relaxed text-zinc-600">
-            Meal tickets cover attending the event and dinner. You can purchase meal tickets even if you are not golfing
-            — for example, if you are coming for the auction, raffle, and evening program and want a seat at dinner.
-          </p>
-          <a
-            href={mealTicketPaymentUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Buy June 6 meal tickets online"
-            class="mt-8 inline-flex rounded-full bg-accent px-8 py-3.5 text-sm font-semibold text-white shadow-[0_1px_5px_rgba(0,0,0,0.35)] transition-all duration-500 ease-spring hover:scale-[1.02] hover:bg-accent/90"
-          >
-            Buy meal tickets
-          </a>
-          <p class="mt-4 text-xs text-zinc-500">
-            Opens secure checkout in a new tab.
-          </p>
-        </section>
-
-        <section
-          id="raffle"
-          class="rounded-2xl border border-zinc-200/80 bg-white p-8 shadow-sm transition-colors duration-500 hover:border-primary/15 md:p-10"
-          aria-labelledby="raffle-heading"
-        >
-          <p class="text-xs font-semibold uppercase tracking-widest text-accent">Raffle</p>
-          <h2 id="raffle-heading" class="mt-3 font-heading text-2xl font-semibold tracking-tight text-zinc-900">
-            $100 per ticket · 200 tickets only
-          </h2>
-          <p class="mt-4 text-base leading-relaxed text-zinc-600">
-            Drawing on <strong class="font-medium text-zinc-800">{eventDayLabel}</strong>. A limited run of two hundred
-            tickets keeps the raffle special. The <strong class="font-medium text-zinc-800">Rifle Raffle</strong> grand prize
-            is a <strong class="font-medium text-zinc-800">complete rifle package</strong> with approximately
-            <strong class="font-medium text-zinc-800">$8,000</strong> in value — see <strong class="font-medium text-zinc-800">Featured prizes &amp; Rifle Raffle</strong> below for
-            the full list — along with other prizes in the drawing.
-          </p>
-          <p class="mt-4 text-xs leading-relaxed text-zinc-500">
-            Any firearm prizes transfer only through a federally licensed dealer, in compliance with applicable law.
-            Winners must be eligible to possess firearms under federal and Idaho law. Staff will provide full rules and
-            transfer steps with your ticket confirmation.
-          </p>
-          <p class="mt-4 text-sm font-medium text-zinc-800">For online raffle purchases, please provide:</p>
-          <ul class="mt-2 list-inside list-disc text-sm leading-relaxed text-zinc-600">
-            <li>Full name</li>
-            <li>Phone number</li>
-            <li>Email address</li>
-          </ul>
-          <a
-            href={rifleRafflePaymentUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Buy June 6 Rifle Raffle tickets online"
-            class="mt-8 inline-flex rounded-full border-2 border-primary bg-primary/5 px-8 py-3.5 text-sm font-semibold text-primary transition-all duration-500 ease-spring hover:bg-primary hover:text-white"
-          >
-            Buy Rifle Raffle ticket(s)
-          </a>
-          <p class="mt-4 text-xs text-zinc-500">
-            Opens secure checkout in a new tab. Raffle rules and eligibility may apply; staff will confirm details.
-          </p>
-        </section>
-      </div>
-
       <section
-        class="mt-14 rounded-2xl border border-dashed border-zinc-300/90 bg-zinc-50/80 p-8 md:p-10"
-        aria-labelledby="prizes-heading"
+        id="meal-tickets"
+        class="mt-14 rounded-2xl border border-zinc-200/80 bg-white p-8 shadow-sm transition-colors duration-500 hover:border-primary/15 md:p-10"
+        aria-labelledby="meal-heading"
       >
-        <h2 id="prizes-heading" class="font-heading text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">
-          Featured prizes &amp; Rifle Raffle
+        <p class="text-xs font-semibold uppercase tracking-widest text-accent">Meal tickets</p>
+        <h2 id="meal-heading" class="mt-3 font-heading text-2xl font-semibold tracking-tight text-zinc-900">
+          $25 per person
         </h2>
-        <p class="mt-3 max-w-3xl text-base leading-relaxed text-zinc-600">
-          The Rifle Raffle is a centerpiece of the night. The winner receives a
-          <strong class="font-medium text-zinc-800">full rifle package</strong> with approximately
-          <strong class="font-medium text-zinc-800">$8,000</strong> in total value, including:
+        <p class="mt-4 max-w-3xl text-base leading-relaxed text-zinc-600">
+          Meal tickets cover attending the event and dinner. You can purchase meal tickets even if you are not golfing — for
+          example, if you are coming for the auction, raffle, and evening program and want a seat at dinner.
         </p>
-        <ul class="mt-4 max-w-3xl list-inside list-disc space-y-2 text-base leading-relaxed text-zinc-600">
-          <li>
-            <strong class="font-medium text-zinc-800">Horizon Firearms</strong> — 7 PRC, 22-inch carbon-barrel build
-          </li>
-          <li>
-            <strong class="font-medium text-zinc-800">Leupold Mark 4HD</strong> 6-24&times;52 scope
-          </li>
-          <li>
-            <strong class="font-medium text-zinc-800">Audere SHADOW</strong> bipod
-          </li>
-        </ul>
-        <p class="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-500">
-          Additional raffle prizes may be announced closer to the event; ask the team for the latest lineup.
-        </p>
+        <a
+          href={mealTicketPaymentUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Buy June 6 meal tickets online"
+          class="mt-8 inline-flex rounded-full bg-accent px-8 py-3.5 text-sm font-semibold text-white shadow-[0_1px_5px_rgba(0,0,0,0.35)] transition-all duration-500 ease-spring hover:scale-[1.02] hover:bg-accent/90"
+        >
+          Buy meal tickets
+        </a>
+        <p class="mt-4 text-xs text-zinc-500">Opens secure checkout in a new tab.</p>
       </section>
 
       <section
