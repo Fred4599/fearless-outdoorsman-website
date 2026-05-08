@@ -13,98 +13,260 @@ const sponsorsSchema = {
   "@type": "WebPage",
   "@id": `${siteUrl}/sponsors#sponsorspage`,
   url: `${siteUrl}/sponsors`,
-  name: "Sponsors — Fearless Outdoorsman",
+  name: "Donors & Sponsors — Fearless Outdoorsman",
   description:
-    "Become a sponsor for Fearless Outdoorsman and help fund no-cost hunting and fishing trips for children with life-threatening illnesses and veterans with trauma.",
+    "Support Fearless Outdoorsman as a donor or sponsor — funding no-cost hunting and fishing trips for children with life-threatening illnesses and veterans with trauma.",
   about: { "@id": `${siteUrl}/#organization` },
   isPartOf: { "@id": `${siteUrl}/#website` },
 };
 
 const breadcrumbs = buildBreadcrumbSchema([
   { name: "Home", item: "/" },
-  { name: "Sponsors", item: "/sponsors" },
+  { name: "Donors & Sponsors", item: "/sponsors" },
 ]);
+
+type Sponsor = { name: string; src: string; url?: string; bgDark?: boolean };
+
+const sponsorLogos: Sponsor[] = [
+  { name: "208 Sacs", src: "/images/sponsors/big/208-sacs.webp" },
+  { name: "Abilities", src: "/images/sponsors/big/abilities.webp" },
+  { name: "Alterra", src: "/images/sponsors/regular/alterra.webp" },
+  { name: "American Steel", src: "/images/sponsors/regular/american-steel.webp" },
+  { name: "Belgard", src: "/images/sponsors/regular/belgard.webp" },
+  { name: "Big Sky Construction", src: "/images/sponsors/regular/big-sky-construction.webp", bgDark: true },
+  { name: "Borderline River", src: "/images/sponsors/regular/borderline-river.webp" },
+  { name: "Camo Cares", src: "/images/sponsors/main-sponsors/camo-cares.webp" },
+  { name: "Distinctive Millwork", src: "/images/sponsors/regular/distinctive-millwork.webp" },
+  { name: "Ditch Witch", src: "/images/sponsors/regular/ditch-witch.webp" },
+  { name: "DMS", src: "/images/sponsors/major/dms.webp" },
+  { name: "Elson Electric", src: "/images/sponsors/big/elson-electric.webp" },
+  { name: "Ford's Fab", src: "/images/sponsors/regular/fords-fab.webp" },
+  { name: "H and H", src: "/images/sponsors/huge/h-and-h.webp" },
+  { name: "Hawkeye", src: "/images/sponsors/big/hawkeye.webp" },
+  { name: "Higgins and Rutledge", src: "/images/sponsors/regular/higgins-and-rutledge.webp" },
+  { name: "Hubble Homes", src: "/images/sponsors/main-sponsors/hubble-homes.webp" },
+  { name: "Hunter's Choice", src: "/images/sponsors/regular/hunters-choice.webp" },
+  { name: "Inline Asphalt", src: "/images/sponsors/regular/inline-asphalt.webp" },
+  { name: "Kiewit", src: "/images/sponsors/regular/kiewit.webp" },
+  { name: "Lafever", src: "/images/sponsors/regular/lafever.webp" },
+  { name: "Mark Guho", src: "/images/sponsors/big/mark-guho.webp" },
+  { name: "New Life Landscape", src: "/images/sponsors/regular/new-life-landscape.webp" },
+  { name: "NW Hardscape", src: "/images/sponsors/big/nw-hardscape.webp" },
+  { name: "Premier Aggregates", src: "/images/sponsors/regular/premier-aggregates.webp" },
+  { name: "Rifle Guru", src: "/images/sponsors/regular/rifle-guru.webp" },
+  { name: "Rosendin Electric", src: "/images/sponsors/regular/rosendin-electric.webp" },
+  { name: "Scheels", src: "/images/sponsors/regular/scheels.webp" },
+  { name: "Site One", src: "/images/sponsors/medium/site-one.webp" },
+  { name: "Sitecrete", src: "/images/sponsors/regular/sitecrete.webp" },
+  { name: "Skyline Excavation", src: "/images/sponsors/big/skyline-excavation.webp" },
+  { name: "Slattery", src: "/images/sponsors/regular/slattery.webp" },
+  { name: "Stor-it", src: "/images/sponsors/major/stor-it_hole-1.webp" },
+  { name: "Sunshine", src: "/images/sponsors/regular/sunshine.webp" },
+  { name: "TVR", src: "/images/sponsors/big/tvr.webp" },
+  { name: "Uria Pump", src: "/images/sponsors/uria-pump.webp" },
+  { name: "Watertight Mechanical", src: "/images/sponsors/medium/watertight-mechanical.webp" },
+];
 ---
 
 <Layout
-  title="Sponsors | Fearless Outdoorsman Hunting & Veterans Nonprofit"
-  description="Support Fearless Outdoorsman as an event or mission sponsor. Sponsorships help cover guided trip logistics, gear, licenses, travel, and participant support at no cost to families and veterans."
-  keywords={["Fearless Outdoorsman sponsors", "Idaho nonprofit sponsorship", "sponsor veterans nonprofit", "sponsor hunting trips for kids"]}
+  title="Donors & Sponsors | Fearless Outdoorsman Hunting & Veterans Nonprofit"
+  description="Donate or sponsor Fearless Outdoorsman to fund guided hunting and fishing trips for kids with life-threatening illness and veterans with trauma. Gifts cover guides, gear, licenses, travel, and meals."
+  keywords={["Fearless Outdoorsman donors", "Fearless Outdoorsman sponsors", "Idaho nonprofit sponsorship", "donate veterans nonprofit", "sponsor hunting trips for kids"]}
   schema={[sponsorsSchema, breadcrumbs]}
 >
   <InteriorChrome>
     <PageHero
       src={pageHeroImages.donors}
-      alt="Fearless Outdoorsman supporters and community partners helping fund outdoor healing experiences"
+      alt="Fearless Outdoorsman donors, sponsors, and community partners helping fund outdoor healing experiences"
     />
-    <main class="mx-auto max-w-4xl px-6 pb-32 pt-10 md:pt-14">
-      <PageIntro label="Partners" />
-      <h1 class="font-heading text-4xl font-semibold tracking-tighter text-primary md:text-5xl lg:text-6xl">
-        Sponsor the mission
-      </h1>
-      <div class="mt-10 space-y-6 text-base leading-relaxed text-zinc-600">
-        <p>
-          Sponsors make large moments possible. From annual events to full-season trip support, your business, family,
-          or organization can directly fund life-changing outdoor experiences for children with life-threatening
-          illnesses and veterans with trauma.
-        </p>
-        <p>
-          We work with sponsors who want meaningful local and regional impact. Your partnership helps remove financial
-          barriers so participants can focus on healing, mentorship, and time outdoors.
-        </p>
+    <main class="pb-32 pt-10 md:pt-14">
+      <div class="mx-auto max-w-4xl px-6">
+        <PageIntro label="Donors & Sponsors" />
+        <h1 class="font-heading text-4xl font-semibold tracking-tighter text-primary md:text-5xl lg:text-6xl">
+          Fund the next trip
+        </h1>
+        <div class="mt-10 space-y-6 text-base leading-relaxed text-zinc-600">
+          <p>
+            Fearless Outdoorsman runs on generosity. Donors and sponsors cover travel, licenses, guides, gear, meals,
+            and the quiet logistics that let participants focus on healing outdoors — not on cost.
+          </p>
+          <p>
+            Whether you give once, monthly, or stand behind us as a business sponsor, you are part of a community that
+            shows up for kids facing life-threatening illness and for veterans carrying trauma. That support turns into
+            elk camps, fishing days, mentorship, and memories that outlast any single season.
+          </p>
+        </div>
+
+        <section class="mt-14 space-y-6">
+          <h2 class="font-heading text-2xl font-semibold tracking-tight text-primary">What your gift supports</h2>
+          <ul class="list-inside list-disc space-y-3 text-base leading-relaxed text-zinc-600 marker:text-primary">
+            <li>Trip logistics and safe, guided experiences in the field</li>
+            <li>Gear, licenses, travel, meals, and lodging for participants</li>
+            <li>Volunteer coordination and participant support</li>
+            <li>Storytelling and outreach so more families find the program</li>
+          </ul>
+        </section>
+
+        <section class="mt-16">
+          <h2 class="font-heading text-2xl font-semibold tracking-tight text-primary">Ways to support</h2>
+          <div class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
+            <article class="rounded-2xl border border-zinc-200/80 bg-white p-7 shadow-sm transition-colors duration-500 hover:border-primary/20 hover:shadow-md">
+              <h3 class="font-heading text-xl font-semibold tracking-tight text-zinc-900">Donate</h3>
+              <p class="mt-3 text-base leading-relaxed text-zinc-600">
+                One-time or monthly gifts directly fund trips, gear, and participant care. Secure checkout through
+                Square with a receipt for your records.
+              </p>
+            </article>
+            <article class="rounded-2xl border border-zinc-200/80 bg-white p-7 shadow-sm transition-colors duration-500 hover:border-primary/20 hover:shadow-md">
+              <h3 class="font-heading text-xl font-semibold tracking-tight text-zinc-900">Sponsor</h3>
+              <p class="mt-3 text-base leading-relaxed text-zinc-600">
+                Businesses and organizations can sponsor events, underwrite trips, or support the mission year-round
+                with meaningful local impact.
+              </p>
+            </article>
+            <article class="rounded-2xl border border-zinc-200/80 bg-white p-7 shadow-sm transition-colors duration-500 hover:border-primary/20 hover:shadow-md">
+              <h3 class="font-heading text-xl font-semibold tracking-tight text-zinc-900">In-kind</h3>
+              <p class="mt-3 text-base leading-relaxed text-zinc-600">
+                Donate gear, services, equipment, or operational support that keeps participants safe and trips moving.
+              </p>
+            </article>
+          </div>
+        </section>
       </div>
 
-      <section class="mt-14 space-y-6">
-        <h2 class="font-heading text-2xl font-semibold tracking-tight text-primary">Sponsorship can include</h2>
-        <ul class="list-inside list-disc space-y-3 text-base leading-relaxed text-zinc-600 marker:text-primary">
-          <li>Event sponsorship for tournaments, raffles, and community fundraisers</li>
-          <li>Trip underwriting for travel, meals, lodging, and guided logistics</li>
-          <li>Gear and supply support for safe, participant-ready experiences</li>
-          <li>In-kind partnerships for services, equipment, and operations</li>
+      <section
+        id="sponsor-wall"
+        class="mx-auto mt-24 max-w-6xl px-6"
+        aria-labelledby="sponsor-wall-heading"
+      >
+        <div class="mx-auto max-w-3xl text-center">
+          <h2
+            id="sponsor-wall-heading"
+            class="font-heading text-3xl font-semibold tracking-tight text-primary md:text-4xl lg:text-5xl"
+          >
+            The people who make this possible.
+          </h2>
+          <p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-zinc-600 md:text-lg">
+            Every trip, tag, license, and truck of gear is funded by partners who believe kids and veterans deserve time
+            outdoors. Thank you.
+          </p>
+        </div>
+
+        <ul
+          class="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6"
+          data-sponsor-grid
+        >
+          {sponsorLogos.map((sponsor, i) => {
+            const tileClass = `group flex aspect-[3/2] items-center justify-center overflow-hidden rounded-xl border border-zinc-200/80 ${
+              sponsor.bgDark ? "bg-zinc-900" : "bg-white"
+            } p-5 shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md`;
+            const inner = (
+              <img
+                src={sponsor.src}
+                alt={`${sponsor.name} logo`}
+                title={sponsor.name}
+                loading="lazy"
+                class="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+              />
+            );
+            return (
+              <li data-sponsor-tile style={`--i:${i}`}>
+                {sponsor.url ? (
+                  <a href={sponsor.url} target="_blank" rel="noopener noreferrer" class={tileClass} aria-label={`Visit ${sponsor.name}`}>
+                    {inner}
+                  </a>
+                ) : (
+                  <div class={tileClass} role="img" aria-label={`${sponsor.name} logo`}>
+                    {inner}
+                  </div>
+                )}
+              </li>
+            );
+          })}
+          <li data-sponsor-tile style={`--i:${sponsorLogos.length}`}>
+            <a
+              href="/contactus"
+              class="group flex aspect-[3/2] flex-col items-center justify-center gap-1 rounded-xl border border-dashed border-primary/30 bg-primary/5 p-5 text-center transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/60 hover:bg-primary/10"
+            >
+              <span class="font-heading text-sm font-semibold text-primary md:text-base">Your logo here</span>
+              <span class="text-xs text-primary/70">Become a sponsor →</span>
+            </a>
+          </li>
         </ul>
       </section>
 
-      <section class="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2">
-        <article class="rounded-2xl border border-zinc-200/80 bg-white p-7 shadow-sm transition-colors duration-500 hover:border-primary/20 hover:shadow-md">
-          <h3 class="font-heading text-xl font-semibold tracking-tight text-zinc-900">Event sponsors</h3>
-          <p class="mt-3 text-base leading-relaxed text-zinc-600">
-            Put your brand behind high-impact fundraising events while helping us expand the number of participants we
-            can serve each year.
+      <div class="mx-auto mt-24 max-w-4xl px-6">
+        <section
+          class="rounded-2xl border border-zinc-200/80 bg-white p-8 shadow-sm transition-colors duration-500 hover:border-primary/20 hover:shadow-md md:p-10"
+        >
+          <h2 class="font-heading text-2xl font-semibold tracking-tight text-primary">Give or get involved</h2>
+          <p class="mt-4 text-base leading-relaxed text-zinc-600">
+            Donate today, or tell us about a sponsorship or in-kind partnership and our team will follow up with next
+            steps.
           </p>
-        </article>
-        <article class="rounded-2xl border border-zinc-200/80 bg-white p-7 shadow-sm transition-colors duration-500 hover:border-primary/20 hover:shadow-md">
-          <h3 class="font-heading text-xl font-semibold tracking-tight text-zinc-900">Mission sponsors</h3>
-          <p class="mt-3 text-base leading-relaxed text-zinc-600">
-            Support the organization year-round with strategic funding that strengthens programs, volunteers, and
-            participant care.
-          </p>
-        </article>
-      </section>
-
-      <section
-        class="mt-16 rounded-2xl border border-zinc-200/80 bg-white p-8 shadow-sm transition-colors duration-500 hover:border-primary/20 hover:shadow-md md:p-10"
-      >
-        <h2 class="font-heading text-2xl font-semibold tracking-tight text-primary">Start a sponsorship</h2>
-        <p class="mt-4 text-base leading-relaxed text-zinc-600">
-          Tell us what type of sponsorship you are considering and our team will follow up with options and next steps.
-        </p>
-        <div class="mt-8 flex flex-wrap gap-4">
-          <a
-            href="/contactus"
-            class="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-[0_1px_5px_rgba(0,0,0,0.4)] transition-all duration-500 ease-spring hover:scale-[1.02] hover:bg-accent/90"
-          >
-            Contact for sponsorship
-          </a>
-          <a
-            href={donateUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="rounded-full border border-primary px-6 py-3 text-sm font-semibold text-primary transition hover:bg-primary/5"
-          >
-            Donate now
-          </a>
-        </div>
-      </section>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a
+              href={donateUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-[0_1px_5px_rgba(0,0,0,0.4)] transition-all duration-500 ease-spring hover:scale-[1.02] hover:bg-accent/90"
+            >
+              Donate now
+            </a>
+            <a
+              href="/contactus"
+              class="rounded-full border border-primary px-6 py-3 text-sm font-semibold text-primary transition hover:bg-primary/5"
+            >
+              Contact for sponsorship
+            </a>
+          </div>
+        </section>
+      </div>
     </main>
+
+    <style>
+      [data-sponsor-tile] {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      [data-sponsor-grid].is-visible [data-sponsor-tile] {
+        animation: sponsor-fade-in 480ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        animation-delay: calc(var(--i, 0) * 35ms);
+      }
+      @media (prefers-reduced-motion: reduce) {
+        [data-sponsor-tile] {
+          opacity: 1;
+          transform: none;
+        }
+        [data-sponsor-grid].is-visible [data-sponsor-tile] {
+          animation: none;
+        }
+      }
+      @keyframes sponsor-fade-in {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+
+    <script>
+      const grid = document.querySelector<HTMLElement>("[data-sponsor-grid]");
+      if (grid) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                grid.classList.add("is-visible");
+                io.disconnect();
+                break;
+              }
+            }
+          },
+          { rootMargin: "0px 0px -10% 0px", threshold: 0.05 },
+        );
+        io.observe(grid);
+      }
+    </script>
   </InteriorChrome>
 </Layout>
