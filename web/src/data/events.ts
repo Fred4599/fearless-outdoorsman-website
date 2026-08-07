@@ -8,23 +8,14 @@ export type SiteEvent = {
   detailHref?: string;
 };
 
-/** ISO date for the annual golf tournament landing page and events index — keep in sync. */
+/** ISO date for the annual golf tournament recap page — keep in sync. */
 export const golfFundraiserDateIso = "2026-06-06";
 
 /**
  * Fundraisers, community nights, and trip-adjacent gatherings.
  * Edit dates and copy as the calendar firms up.
  */
-export const upcomingEvents: SiteEvent[] = [
-  {
-    title: "Annual golf tournament & fundraiser",
-    date: golfFundraiserDateIso,
-    location: "Eagle Hills Golf Course, Eagle, ID — open to the public",
-    description:
-      "Join us for golf, a live auction, dinner, and our limited-ticket raffle — including our Rifle Raffle with a complete ~$8,000 rifle package (Horizon Firearms 7 PRC, Leupold Mark 4HD 6-24x52, Audere SHADOW bipod, and more). Meal tickets are available for guests who want to attend the evening without golfing.",
-    detailHref: "/golf-tournament",
-  },
-];
+export const upcomingEvents: SiteEvent[] = [];
 
 function parseEventDate(iso: string): Date {
   const [y, m, d] = iso.split("-").map(Number);

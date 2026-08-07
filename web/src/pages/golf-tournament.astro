@@ -5,13 +5,13 @@ import PageHero from "../components/PageHero.astro";
 import PageIntro from "../components/PageIntro.astro";
 import "../styles/global.css";
 import { pageHeroImages } from "../data/site-images";
-import { contactEmail, donateUrl, phone, phoneTel } from "../data/site";
+import { contactEmail, donateUrl } from "../data/site";
 import { formatEventDate, golfFundraiserDateIso } from "../data/events";
 import { buildBreadcrumbSchema, defaultOgImage, siteUrl } from "../data/seo";
 
-const pageTitle = "June 6 Golf Tournament & Fundraiser | Eagle Hills Golf Course, Eagle, Idaho";
+const pageTitle = "Thank You — 2026 Golf Tournament & Fundraiser | Fearless Outdoorsman";
 const pageDescription =
-  "Saturday, June 6, 2026 at Eagle Hills Golf Course in Eagle, Idaho — annual golf tournament, live auction, dinner, and limited Rifle Raffle drawing (200 tickets), including a complete rifle package valued at about $8,000. Open to the public. Meal tickets $25; raffle tickets $100. Every dollar supports Fearless Outdoorsman, a hunting and veterans nonprofit for children with life-threatening illnesses.";
+  "Thank you to everyone who joined Fearless Outdoorsman's annual golf tournament and fundraiser on June 6, 2026 at Eagle Hills Golf Course in Eagle, Idaho. Your support funds no-cost hunting and fishing trips for children with life-threatening illnesses and veterans with trauma.";
 
 const golfEventSchema = {
   "@context": "https://schema.org",
@@ -40,30 +40,6 @@ const golfEventSchema = {
   organizer: { "@id": `${siteUrl}/#organization` },
   image: [`${siteUrl}${pageHeroImages.golfTournament}`, defaultOgImage],
   url: `${siteUrl}/golf-tournament`,
-  offers: [
-    {
-      "@type": "Offer",
-      name: "Meal ticket",
-      description: "Dinner, evening program, and event access — non-golfers welcome.",
-      price: "25",
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
-      url: `${siteUrl}/golf-tournament#meal-tickets`,
-      validFrom: "2026-01-01",
-    },
-    {
-      "@type": "Offer",
-      name: "Raffle ticket",
-      description:
-        "Raffle drawing on June 6 — limited to 200 tickets. Grand prize: complete rifle package (~$8,000 value) plus additional prizes; firearm transfers go through a federally licensed dealer.",
-      price: "100",
-      priceCurrency: "USD",
-      availability: "https://schema.org/LimitedAvailability",
-      inventoryLevel: { "@type": "QuantitativeValue", value: 200 },
-      url: `${siteUrl}/golf-tournament#raffle`,
-      validFrom: "2026-01-01",
-    },
-  ],
   performer: { "@id": `${siteUrl}/#organization` },
   audience: {
     "@type": "Audience",
@@ -71,52 +47,16 @@ const golfEventSchema = {
   },
   about: { "@id": `${siteUrl}/#organization` },
   keywords:
-    "golf tournament fundraiser Eagle Idaho, Eagle Hills Golf Course charity event, hunting nonprofit fundraiser, veterans nonprofit fundraiser, kids with illness nonprofit event, rifle raffle fundraiser Idaho",
+    "golf tournament fundraiser Eagle Idaho, Eagle Hills Golf Course charity event, hunting nonprofit fundraiser, veterans nonprofit fundraiser",
 };
 
 const breadcrumbs = buildBreadcrumbSchema([
   { name: "Home", item: "/" },
   { name: "Events", item: "/events" },
-  { name: "June 6 golf fundraiser", item: "/golf-tournament" },
+  { name: "2026 golf fundraiser", item: "/golf-tournament" },
 ]);
 
-const sponsorSubject = encodeURIComponent("June 6 golf fundraiser — Sponsorship");
-const sponsorBody = encodeURIComponent(
-  [
-    "Hello,",
-    "",
-    "I'm interested in sponsoring the June 6 golf tournament and fundraiser.",
-    "",
-    "Organization / name:",
-    "Best contact:",
-    "",
-    "Thank you!",
-  ].join("\n"),
-);
-
-const mealTicketPaymentUrl = "https://app.fearlessoutdoorsman.com/payment-link/69e7d6347dd3512d92077f13";
-const rifleRafflePaymentUrl = "https://app.fearlessoutdoorsman.com/payment-link/69e7d5b2557558e89e5219c2";
-const mailSponsor = `mailto:${contactEmail}?subject=${sponsorSubject}&body=${sponsorBody}`;
-
 const eventDayLabel = formatEventDate(golfFundraiserDateIso);
-const rifleRafflePhotos = [
-  {
-    src: "/images/rifle-raffle/rifle-raffle-1.png",
-    alt: "Rifle Raffle rifle shown side profile on a rock.",
-  },
-  {
-    src: "/images/rifle-raffle/rifle-raffle-2.png",
-    alt: "Rifle Raffle rifle setup in the field with bipod and scope.",
-  },
-  {
-    src: "/images/rifle-raffle/rifle-raffle-3.png",
-    alt: "Close-up of the Rifle Raffle stock and camo finish.",
-  },
-  {
-    src: "/images/rifle-raffle/rifle-raffle-4.png",
-    alt: "Close-up of the Rifle Raffle scope and action area.",
-  },
-];
 const titleSponsors = [
   { name: "Hubble Homes", src: "/images/sponsors/main-sponsors/hubble-homes.webp" },
   { name: "Camo Cares", src: "/images/sponsors/main-sponsors/camo-cares.webp" },
@@ -164,7 +104,12 @@ const tournamentTextSponsors = ["B and B Framing", "Tanner Construction"];
   title={pageTitle}
   description={pageDescription}
   socialImagePath={pageHeroImages.golfTournament}
-  keywords={["golf tournament fundraiser Eagle Idaho", "Eagle Hills Golf Course fundraiser", "June 6 golf fundraiser Idaho", "rifle raffle fundraiser Idaho", "hunting nonprofit golf event", "veterans nonprofit benefit golf", "charity golf Eagle Idaho"]}
+  keywords={[
+    "Fearless Outdoorsman golf tournament",
+    "Eagle Hills Golf Course fundraiser",
+    "hunting nonprofit golf event Idaho",
+    "veterans nonprofit benefit golf",
+  ]}
   schema={[golfEventSchema, breadcrumbs]}
 >
   <InteriorChrome>
@@ -179,25 +124,25 @@ const tournamentTextSponsors = ["B and B Framing", "Tanner Construction"];
             <a href="/events" class="font-medium text-accent transition hover:text-primary">Events</a>
           </li>
           <li aria-hidden="true" class="text-zinc-300">/</li>
-          <li class="font-medium text-zinc-700">June 6 golf fundraiser</li>
+          <li class="font-medium text-zinc-700">2026 golf fundraiser</li>
         </ol>
       </nav>
 
       <div class="mt-8 max-w-3xl">
-        <PageIntro label="Fundraiser" />
+        <PageIntro label="Thank you" />
         <p class="text-sm font-semibold uppercase tracking-widest text-accent">{eventDayLabel}</p>
         <h1 class="mt-3 font-heading text-4xl font-semibold tracking-tighter text-primary md:text-5xl lg:text-6xl">
-          Annual golf tournament &amp; fundraiser
+          What a day at Eagle Hills
         </h1>
         <p class="mt-6 text-base leading-relaxed text-zinc-600">
-          Our biggest night of the year brings together the golf tournament, a live auction, and dinner — all supporting
-          Fearless Outdoorsman trips and programs. The event is{" "}
-          <strong class="font-medium text-zinc-800">open to the public</strong> again this year, whether you play a round
-          or join us for the evening.
+          Our annual golf tournament and fundraiser is wrapped for 2026 — and it was an incredible one. Golfers,
+          dinner guests, raffle supporters, auction bidders, volunteers, and sponsors showed up in force at Eagle Hills
+          Golf Course. Every round played, every bid, and every ticket purchased goes straight toward no-cost outdoor
+          trips for kids and veterans.
         </p>
-        <p class="mt-4 text-sm font-medium text-zinc-500">
-          Questions? Call <a href={`tel:+1${phoneTel}`} class="text-accent hover:text-primary">{phone}</a> or{" "}
-          <a href="/contactus" class="text-accent hover:text-primary">send a message</a>.
+        <p class="mt-4 text-base leading-relaxed text-zinc-600">
+          If you were there: thank you. Days like this are why Fearless Outdoorsman can keep sending families and
+          veterans into the field without asking them to cover the cost.
         </p>
       </div>
 
@@ -209,159 +154,42 @@ const tournamentTextSponsors = ["B and B Framing", "Tanner Construction"];
         <div>
           <p class="text-xs font-semibold uppercase tracking-widest text-zinc-500">When</p>
           <p class="mt-2 font-heading text-lg font-semibold text-zinc-900">{eventDayLabel}</p>
-          <p class="mt-1 text-sm text-zinc-600">Golf, auction, dinner, and raffle drawing — one day.</p>
+          <p class="mt-1 text-sm text-zinc-600">Golf, auction, dinner, and raffle — one unforgettable day.</p>
         </div>
         <div>
           <p class="text-xs font-semibold uppercase tracking-widest text-zinc-500">Where</p>
           <p class="mt-2 font-heading text-lg font-semibold text-zinc-900">Eagle Hills Golf Course</p>
-          <p class="mt-1 text-sm leading-relaxed text-zinc-600">
-            605 N Edgewood Ln, Eagle, ID 83616
-          </p>
+          <p class="mt-1 text-sm leading-relaxed text-zinc-600">605 N Edgewood Ln, Eagle, ID 83616</p>
         </div>
       </div>
 
-      <section class="mt-14" aria-labelledby="included-heading">
-        <h2 id="included-heading" class="font-heading text-2xl font-semibold tracking-tight text-zinc-900 md:text-3xl">
-          What&apos;s included
+      <section class="mt-14" aria-labelledby="highlights-heading">
+        <h2 id="highlights-heading" class="font-heading text-2xl font-semibold tracking-tight text-zinc-900 md:text-3xl">
+          Highlights from the day
         </h2>
         <div class="mt-8 grid gap-6 sm:grid-cols-3">
-          <div
-            class="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-sm transition-colors duration-500 hover:border-primary/20 hover:shadow-md"
-          >
+          <div class="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-sm">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent">Daytime</p>
             <h3 class="mt-3 font-heading text-lg font-semibold text-zinc-900">Golf tournament</h3>
-            <p class="mt-2 text-sm leading-relaxed text-zinc-600">Hit the course with supporters and friends — a centerpiece of our annual fundraiser.</p>
+            <p class="mt-2 text-sm leading-relaxed text-zinc-600">
+              Supporters packed the course — a centerpiece of our biggest fundraising day of the year.
+            </p>
           </div>
-          <div
-            class="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-sm transition-colors duration-500 hover:border-primary/20 hover:shadow-md"
-          >
+          <div class="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-sm">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent">Evening</p>
             <h3 class="mt-3 font-heading text-lg font-semibold text-zinc-900">Live auction</h3>
-            <p class="mt-2 text-sm leading-relaxed text-zinc-600">Bid on great items and experiences; proceeds fuel outdoor healing trips.</p>
+            <p class="mt-2 text-sm leading-relaxed text-zinc-600">
+              Bids on items and experiences that turn directly into outdoor healing trips.
+            </p>
           </div>
-          <div
-            class="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-sm transition-colors duration-500 hover:border-primary/20 hover:shadow-md"
-          >
+          <div class="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-sm">
             <p class="text-xs font-semibold uppercase tracking-widest text-accent">Together</p>
-            <h3 class="mt-3 font-heading text-lg font-semibold text-zinc-900">Dinner</h3>
-            <p class="mt-2 text-sm leading-relaxed text-zinc-600">Share a meal, hear stories from the field, and celebrate the community behind our mission.</p>
+            <h3 class="mt-3 font-heading text-lg font-semibold text-zinc-900">Dinner &amp; community</h3>
+            <p class="mt-2 text-sm leading-relaxed text-zinc-600">
+              A shared meal, stories from the field, and a room full of people who believe in this mission.
+            </p>
           </div>
         </div>
-      </section>
-
-      <section
-        id="raffle"
-        class="mt-14 rounded-2xl border border-dashed border-zinc-300/90 bg-zinc-50/80 p-8 md:p-10"
-        aria-labelledby="raffle-heading"
-      >
-        <p class="text-xs font-semibold uppercase tracking-widest text-accent">Raffle</p>
-        <h2 id="raffle-heading" class="mt-2 font-heading text-2xl font-semibold tracking-tight text-zinc-900 md:text-3xl">
-          Rifle Raffle
-        </h2>
-        <p class="mt-2 font-heading text-lg font-semibold text-zinc-800 md:text-xl">$100 per ticket · 200 tickets only</p>
-        <p class="mt-4 max-w-3xl text-base leading-relaxed text-zinc-600">
-          Drawing on <strong class="font-medium text-zinc-800">{eventDayLabel}</strong>. A limited run of two hundred
-          tickets keeps the raffle special. The grand prize is a <strong class="font-medium text-zinc-800">full rifle
-          package</strong> with approximately <strong class="font-medium text-zinc-800">$8,000</strong> in total value,
-          including the items below, along with <strong class="font-medium text-zinc-800">other prizes</strong> in the
-          same drawing.
-        </p>
-        <p class="mt-4 max-w-3xl text-base font-medium leading-relaxed text-zinc-800">Package includes:</p>
-        <ul class="mt-3 max-w-3xl list-inside list-disc space-y-2 text-base leading-relaxed text-zinc-600">
-          <li>
-            <strong class="font-medium text-zinc-800">Horizon Firearms</strong> — 7 PRC, 22-inch carbon-barrel build
-          </li>
-          <li>
-            <strong class="font-medium text-zinc-800">Leupold Mark 4HD</strong> 6-24&times;52 scope
-          </li>
-          <li>
-            <strong class="font-medium text-zinc-800">Audere SHADOW</strong> bipod
-          </li>
-        </ul>
-        <p class="mt-4 max-w-3xl text-sm leading-relaxed text-zinc-500">
-          Additional raffle prizes may be announced closer to the event; ask the team for the latest lineup.
-        </p>
-        <p class="mt-4 max-w-3xl text-xs leading-relaxed text-zinc-500">
-          Any firearm prizes transfer only through a federally licensed dealer, in compliance with applicable law.
-          Winners must be eligible to possess firearms under federal and Idaho law. Staff will provide full rules and
-          transfer steps with your ticket confirmation.
-        </p>
-        <p class="mt-4 text-sm font-medium text-zinc-800">For online raffle purchases, please provide:</p>
-        <ul class="mt-2 list-inside list-disc text-sm leading-relaxed text-zinc-600">
-          <li>Full name</li>
-          <li>Phone number</li>
-          <li>Email address</li>
-        </ul>
-        <a
-          href={rifleRafflePaymentUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Buy June 6 Rifle Raffle tickets online"
-          class="mt-8 inline-flex rounded-full border-2 border-primary bg-primary/5 px-8 py-3.5 text-sm font-semibold text-primary transition-all duration-500 ease-spring hover:bg-primary hover:text-white"
-        >
-          Buy Rifle Raffle ticket(s)
-        </a>
-        <p class="mt-4 text-xs text-zinc-500">
-          Opens secure checkout in a new tab. Raffle rules and eligibility may apply; staff will confirm details.
-        </p>
-
-        <h3
-          class="mt-10 font-heading text-lg font-semibold tracking-tight text-zinc-900 md:text-xl"
-          id="raffle-photos-heading"
-        >
-          Package photos
-        </h3>
-        <p class="mt-2 max-w-3xl text-sm text-zinc-600">
-          Tap a photo to go straight to checkout and reserve your chance in the drawing.
-        </p>
-        <div class="mt-5 grid gap-4 sm:grid-cols-2">
-          {rifleRafflePhotos.map((photo) => (
-            <a
-              href={rifleRafflePaymentUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Buy June 6 Rifle Raffle tickets online"
-              class="group block overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:border-accent/40 hover:shadow-md"
-            >
-              <figure class="relative">
-                <img
-                  src={photo.src}
-                  alt={photo.alt}
-                  loading="lazy"
-                  class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.01]"
-                />
-                <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent px-4 pb-3 pt-8 text-xs font-semibold uppercase tracking-wider text-white">
-                  Buy Rifle Raffle ticket(s)
-                </figcaption>
-              </figure>
-            </a>
-          ))}
-        </div>
-      </section>
-
-      <section
-        id="meal-tickets"
-        class="mt-14 rounded-2xl border border-zinc-200/80 bg-white p-8 shadow-sm transition-colors duration-500 hover:border-primary/15 md:p-10"
-        aria-labelledby="meal-heading"
-      >
-        <p class="text-xs font-semibold uppercase tracking-widest text-accent">Meal tickets</p>
-        <h2 id="meal-heading" class="mt-3 font-heading text-2xl font-semibold tracking-tight text-zinc-900">
-          $25 per person
-        </h2>
-        <p class="mt-4 max-w-3xl text-base leading-relaxed text-zinc-600">
-          Meal tickets cover attending the event and dinner. You can purchase meal tickets even if you are not golfing — for
-          example, if you are coming for the auction, raffle, and evening program and want a seat at dinner.
-        </p>
-        <a
-          href={mealTicketPaymentUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Buy June 6 meal tickets online"
-          class="mt-8 inline-flex rounded-full bg-accent px-8 py-3.5 text-sm font-semibold text-white shadow-[0_1px_5px_rgba(0,0,0,0.35)] transition-all duration-500 ease-spring hover:scale-[1.02] hover:bg-accent/90"
-        >
-          Buy meal tickets
-        </a>
-        <p class="mt-4 text-xs text-zinc-500">Opens secure checkout in a new tab.</p>
       </section>
 
       <section
@@ -372,14 +200,14 @@ const tournamentTextSponsors = ["B and B Framing", "Tanner Construction"];
           Thank you to this year&apos;s sponsors
         </h2>
         <p class="mt-3 max-w-3xl text-base leading-relaxed text-zinc-600">
-          This event is possible because of generous businesses and community partners who step up to support kids,
-          families, and veterans through Fearless Outdoorsman.
+          This event was possible because of generous businesses and community partners who step up for kids, families,
+          and veterans through Fearless Outdoorsman.
         </p>
         <div class="mt-10">
           <p class="text-xs font-semibold uppercase tracking-widest text-accent">Title sponsors</p>
           <div class="mt-4 grid gap-5 sm:grid-cols-2">
             {titleSponsors.map((sponsor) => (
-              <article class="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-sm ring-1 ring-primary/5 transition hover:border-primary/20 hover:shadow-md">
+              <article class="rounded-2xl border border-zinc-200/80 bg-white p-6 shadow-sm ring-1 ring-primary/5">
                 <div
                   class="flex h-44 items-center justify-center overflow-hidden rounded-xl p-4"
                   style={`background-color: ${sponsor.name === "Big Sky Construction" ? "#000000" : "#ffffff"};`}
@@ -406,7 +234,7 @@ const tournamentTextSponsors = ["B and B Framing", "Tanner Construction"];
           <div class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
             {supportingSponsors.map((sponsor) => (
               <div
-                class="flex h-20 items-center justify-center overflow-hidden rounded-lg border border-zinc-200/80 p-2 transition hover:border-accent/40 hover:shadow-sm sm:h-24 sm:p-3"
+                class="flex h-20 items-center justify-center overflow-hidden rounded-lg border border-zinc-200/80 p-2 sm:h-24 sm:p-3"
                 style={`background-color: ${sponsor.name === "Big Sky Construction" ? "#000000" : "#ffffff"};`}
                 title={sponsor.name}
               >
@@ -424,10 +252,6 @@ const tournamentTextSponsors = ["B and B Framing", "Tanner Construction"];
             <span class="font-medium text-zinc-700">Also supporting:</span> {tournamentTextSponsors.join(", ")}.
           </p>
         </div>
-        <p class="mt-5 text-xs text-zinc-500">
-          Want to be listed as a sponsor?{" "}
-          <a href={mailSponsor} class="font-medium text-accent hover:text-primary">Email our team</a>.
-        </p>
       </section>
 
       <section
@@ -435,101 +259,39 @@ const tournamentTextSponsors = ["B and B Framing", "Tanner Construction"];
         aria-labelledby="support-heading"
       >
         <h2 id="support-heading" class="font-heading text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">
-          Sponsor, give, or volunteer
+          Keep the momentum going
         </h2>
         <p class="mt-3 max-w-2xl text-base leading-relaxed text-zinc-600">
-          Underwriting and sponsorships help us keep participant experiences fully covered. If you would like to sponsor
-          the tournament, donate toward the mission, or explore other ways to get involved, we would love to hear from you.
+          Ticket sales are closed for this year&apos;s tournament, but the mission continues year-round. A gift today
+          still funds gear, travel, and guided days for kids and veterans — and we&apos;d love to have you back when we
+          announce next year&apos;s date.
         </p>
         <div class="mt-8 flex flex-wrap gap-4">
-          <a
-            href={mailSponsor}
-            aria-label={`Email ${contactEmail} about sponsoring the June 6 fundraiser`}
-            class="inline-flex rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-primary/90"
-          >
-            Sponsor the event
-          </a>
           <a
             href={donateUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex rounded-full border border-zinc-300 bg-white px-8 py-3.5 text-sm font-semibold text-zinc-800 transition hover:border-primary/30 hover:bg-zinc-50"
+            class="inline-flex rounded-full bg-primary px-8 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-primary/90"
           >
             Donate
           </a>
           <a
-            href="/contactus"
+            href="/sponsors"
+            class="inline-flex rounded-full border border-zinc-300 bg-white px-8 py-3.5 text-sm font-semibold text-zinc-800 transition hover:border-primary/30 hover:bg-zinc-50"
+          >
+            See our donors &amp; sponsors
+          </a>
+          <a
+            href={`mailto:${contactEmail}`}
             class="inline-flex rounded-full border border-transparent px-8 py-3.5 text-sm font-semibold text-accent underline-offset-4 hover:text-primary hover:underline"
           >
             Get involved
           </a>
         </div>
-      </section>
-
-      <section class="mt-16 border-t border-zinc-200 pt-12" aria-labelledby="participate-heading">
-        <h2 id="participate-heading" class="font-heading text-xl font-semibold tracking-tight text-zinc-900 md:text-2xl">
-          How to participate
-        </h2>
-        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <a
-            href={mealTicketPaymentUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Buy June 6 meal tickets online"
-            class="group flex flex-col rounded-xl border border-zinc-200/90 bg-white p-5 shadow-sm transition hover:border-accent/40 hover:shadow-md"
-          >
-            <span class="text-sm font-semibold text-zinc-900 group-hover:text-primary">Meal tickets</span>
-            <span class="mt-1 text-xs text-zinc-500">$25 — dinner &amp; evening access</span>
-            <span class="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-accent">
-              Buy ticket(s)
-              <iconify-icon icon="solar:arrow-right-linear" class="text-base"></iconify-icon>
-            </span>
-          </a>
-          <a
-            href={rifleRafflePaymentUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Buy June 6 Rifle Raffle tickets online"
-            class="group flex flex-col rounded-xl border border-zinc-200/90 bg-white p-5 shadow-sm transition hover:border-accent/40 hover:shadow-md"
-          >
-            <span class="text-sm font-semibold text-zinc-900 group-hover:text-primary">Raffle</span>
-            <span class="mt-1 text-xs text-zinc-500">$100 — drawing June 6</span>
-            <span class="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-accent">
-              Buy ticket(s)
-              <iconify-icon icon="solar:arrow-right-linear" class="text-base"></iconify-icon>
-            </span>
-          </a>
-          <a
-            href={donateUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group flex flex-col rounded-xl border border-zinc-200/90 bg-white p-5 shadow-sm transition hover:border-accent/40 hover:shadow-md"
-          >
-            <span class="text-sm font-semibold text-zinc-900 group-hover:text-primary">Donate</span>
-            <span class="mt-1 text-xs text-zinc-500">Square — mission support</span>
-            <span class="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-accent">
-              Give now
-              <iconify-icon icon="solar:arrow-right-linear" class="text-base"></iconify-icon>
-            </span>
-          </a>
-          <a
-            href={mailSponsor}
-            aria-label="Email about sponsoring the June 6 event"
-            class="group flex flex-col rounded-xl border border-zinc-200/90 bg-white p-5 shadow-sm transition hover:border-accent/40 hover:shadow-md"
-          >
-            <span class="text-sm font-semibold text-zinc-900 group-hover:text-primary">Sponsor</span>
-            <span class="mt-1 text-xs text-zinc-500">Partner on June 6</span>
-            <span class="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-accent">
-              Email the team
-              <iconify-icon icon="solar:arrow-right-linear" class="text-base"></iconify-icon>
-            </span>
-          </a>
-        </div>
-        <p class="mt-8 text-center text-sm text-zinc-500">
-          Prefer the full contact form?{" "}
-          <a href="/contactus" class="font-medium text-accent hover:text-primary">Go to Contact</a>
+        <p class="mt-8 text-sm text-zinc-500">
+          <a href="/events" class="font-medium text-accent hover:text-primary">Back to events</a>
           {" "}·{" "}
-          <a href="/events" class="font-medium text-accent hover:text-primary">All events</a>
+          <a href="/contactus" class="font-medium text-accent hover:text-primary">Contact</a>
         </p>
       </section>
     </main>

@@ -217,7 +217,7 @@ export const siteFaqs: FaqItem[] = [
   {
     question: "How can I support Fearless Outdoorsman?",
     answer:
-      "You can donate through Square at any amount, sponsor the annual golf tournament and fundraiser, join as a volunteer mentor, or underwrite specific trips, gear, or travel. Every gift directly funds outdoor experiences for participants.",
+      "You can donate through Square at any amount, sponsor fundraisers and events, join as a volunteer mentor, or underwrite specific trips, gear, or travel. Every gift directly funds outdoor experiences for participants.",
   },
   {
     question: "Is Fearless Outdoorsman a 501(c)(3) nonprofit?",

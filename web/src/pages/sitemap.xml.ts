@@ -7,7 +7,7 @@ const routes: Array<{ path: string; changefreq: string; priority: string }> = [
   { path: "/about-us", changefreq: "monthly", priority: "0.9" },
   { path: "/trips", changefreq: "monthly", priority: "0.9" },
   { path: "/events", changefreq: "weekly", priority: "0.9" },
-  { path: "/golf-tournament", changefreq: "weekly", priority: "0.9" },
+  { path: "/golf-tournament", changefreq: "yearly", priority: "0.4" },
   { path: "/apply", changefreq: "monthly", priority: "0.9" },
   { path: "/donation", changefreq: "monthly", priority: "0.9" },
   { path: "/sponsors", changefreq: "monthly", priority: "0.8" },
